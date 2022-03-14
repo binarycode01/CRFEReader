@@ -83,5 +83,14 @@ namespace CR.XML.Reader.Test {
                 return ResourceManager.GetString("RealFEText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;NotaCreditoElectronica xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/notaCreditoElectronica&quot;&gt;&lt;Clave&gt;50622022200011277076100100002030000000002100000007&lt;/Clave&gt;&lt;CodigoActividad&gt;722003&lt;/CodigoActividad&gt;&lt;NumeroConsecutivo&gt;00100002030000000002&lt;/NumeroConsecutivo&gt;&lt;FechaEmision&gt;2022-02-22T13:25:31Z&lt;/FechaEmision&gt;&lt;Emisor&gt;&lt;Nombre&gt;Diego Sánchez Salazar&lt;/Nombre&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RealNCText {
+            get {
+                return ResourceManager.GetString("RealNCText", resourceCulture);
+            }
+        }
     }
 }

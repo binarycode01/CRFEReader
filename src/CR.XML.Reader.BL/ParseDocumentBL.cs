@@ -1,38 +1,45 @@
 ﻿using CR.XML.Reader.Entities;
-using CR.XML.Reader.Entities.XSD.v43.Factura;
 using System.Xml.Serialization;
 
 namespace CR.XML.Reader.BL
 {
     public class ParseDocumentBL
     {
-        public IDocCR Parse(Stream text)
+        public IDocCR Parse(string text)
         {
             try
             {
+                // TODO: Check Stream or Text usage... 
+                Type type = new ParseXMLType().GetXMLType(text);
                 
-                // TODO: Add another types...
-                XmlSerializer serializer = new XmlSerializer(typeof(FacturaElectronica));
+                XmlSerializer serializer = new XmlSerializer(type);
 
-                var document = serializer.Deserialize(text);
+                var document = serializer.Deserialize(ParseDocumentBL.TextToStream(text));
 
                 if (document is null)
                 {
                     throw new Exception("Invalid document");
                 }
 
-                // TODO: Each type.
-                return (FacturaElectronica)document;
+                return (IDocCR)document;
             }
             catch (Exception ex)
             {
-                
                 // TODO: logger 
                 //throw;
             }
 
-            // Invalid Document
             return null;
+        }
+
+        private static Stream TextToStream(string text)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            writer.Write(text);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
         }
     }
 }

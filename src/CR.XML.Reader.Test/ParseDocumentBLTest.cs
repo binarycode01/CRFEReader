@@ -1,10 +1,5 @@
 ﻿using CR.XML.Reader.BL;
 using CR.XML.Reader.Entities.XSD.v43.Factura;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace CR.XML.Reader.Test
@@ -16,10 +11,19 @@ namespace CR.XML.Reader.Test
         {
             var bl = new ParseDocumentBL();
 
-            Stream mem = StringToSteam(TestResources.RealFEText);
-            var doc = bl.Parse(mem);
+            var doc = new ParseDocumentBL().Parse(TestResources.RealFEText);
 
             Assert.IsType<FacturaElectronica>(doc);
+        }
+
+        [Fact]
+        public void Parse_Valid_Credit_Note_CR()
+        {
+            var bl = new ParseDocumentBL();
+
+            var doc = new ParseDocumentBL().Parse(TestResources.RealNCText);
+
+            Assert.IsType<Entities.XSD.v43.NotaCredito.NotaCreditoElectronica>(doc);
         }
 
         [Fact]
@@ -27,8 +31,7 @@ namespace CR.XML.Reader.Test
         {
             var bl = new ParseDocumentBL();
 
-            Stream mem = StringToSteam(TestResources.InvalidXML);
-            var doc = bl.Parse(mem);
+            var doc = new ParseDocumentBL().Parse(TestResources.InvalidXML);
 
             Assert.Null(doc);
         }
