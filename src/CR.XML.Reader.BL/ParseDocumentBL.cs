@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace CR.XML.Reader.BL
 {
-    public class ParseDocumentBL
+    public class ParseDocumentBL : IParseDocumentBL
     {
         public IDocCR Parse(string text)
         {
