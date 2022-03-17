@@ -4,38 +4,23 @@ using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class InvoiceRepository : IRepository<FacturaElectronica>
+    public class InvoiceRepository : GenericDocRepository<FacturaElectronica>
     {
-        #region Atributes
-        private readonly IDbConnection Connection;
+        #region Constructors
+        public InvoiceRepository (IDbConnection connection) : base (connection) { }
+
         #endregion
 
-        #region Constructors
-        public InvoiceRepository (IDbConnection connection)
-        {
-            Connection = connection;
-        }
-        #endregion 
+        #region Overrides
+        protected override string TableName { get { return "Factura"; } }
 
-        #region Public Methods
-        public void Save(FacturaElectronica invoice)
+        public override void AddDocument(FacturaElectronica entity)
         {
-            try
+            this.Connection.Execute("Insert into Factura values (@Clave, @Consecutivo)", new
             {
-                // TODO: Add complete structure. 
-                this.Connection.Execute("Insert into Factura values (@Clave, @Consecutivo)", new
-                {
-                    Clave = invoice.Clave,
-                    Consecutivo = invoice.NumeroConsecutivo
-                });
-
-                // TODO: Add child objects.
-            }
-            catch (Exception ex)
-            {
-                // TODO: Error 
-                throw;
-            }
+                Clave = entity.Clave,
+                Consecutivo = entity.NumeroConsecutivo
+            });
         }
         #endregion 
     }

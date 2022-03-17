@@ -49,7 +49,7 @@ namespace CR.XML.Reader.BL
                     TiquetRepository.Save((TiqueteElectronico)document);
                     break;
                 default:
-                    break;
+                    throw new NotImplementedException(String.Format(Messages.NSInvalidType));
             }
         }
         #endregion

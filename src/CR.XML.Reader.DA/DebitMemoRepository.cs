@@ -1,17 +1,27 @@
 ﻿using CR.XML.Reader.Entities.XSD.v43.NotaDebito;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
+using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class DebitMemoRepository : IRepository<NotaDebitoElectronica>
+    public class DebitMemoRepository : GenericDocRepository<NotaDebitoElectronica>
     {
-        public void Save(NotaDebitoElectronica entity)
+        #region Contructor
+        public DebitMemoRepository(IDbConnection connection) : base(connection) { }
+        #endregion
+
+        #region Overrides
+        protected override string TableName { get { return "NotaDebito"; } }
+
+        public override void AddDocument(NotaDebitoElectronica entity)
         {
-            throw new NotImplementedException();
+            // TODO: Add complete structure. 
+            this.Connection.Execute("Insert into NotaDebito values (@Clave, @Consecutivo)", new
+            {
+                Clave = entity.Clave,
+                Consecutivo = entity.NumeroConsecutivo
+            });
         }
+        #endregion 
     }
 }

@@ -1,17 +1,26 @@
 ﻿using CR.XML.Reader.Entities.XSD.v43.FacturaExportacion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
+using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class ExportInvoiceRepository : IRepository<FacturaElectronicaExportacion>
+    public class ExportInvoiceRepository : GenericDocRepository<FacturaElectronicaExportacion>
     {
-        public void Save(FacturaElectronicaExportacion entity)
+        #region Contructors
+        public ExportInvoiceRepository (IDbConnection connection) : base(connection) { }
+        #endregion
+
+        #region Overrides
+        protected override string TableName { get { return "Exportacion"; } }
+
+        public override void AddDocument(FacturaElectronicaExportacion entity)
         {
-            throw new NotImplementedException();
+            this.Connection.Execute("Insert into Exportacion values (@Clave, @Consecutivo)", new
+            {
+                Clave = entity.Clave,
+                Consecutivo = entity.NumeroConsecutivo
+            });
         }
+        #endregion 
     }
 }

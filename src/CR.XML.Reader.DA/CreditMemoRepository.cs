@@ -1,17 +1,28 @@
 ﻿using CR.XML.Reader.Entities.XSD.v43.NotaCredito;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
+using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class CreditMemoRepository : IRepository<NotaCreditoElectronica>
+    public class CreditMemoRepository : GenericDocRepository<NotaCreditoElectronica> 
     {
-        public void Save(NotaCreditoElectronica entity)
+        #region Constructors
+        public CreditMemoRepository(IDbConnection connection) : base(connection)
+        { }
+        #endregion
+
+        #region Overrides
+        protected override string TableName { get { return "NotaCredito"; } }
+
+        public override void AddDocument(NotaCreditoElectronica entity)
         {
-            throw new NotImplementedException();
+            // TODO: Add complete structure. 
+            this.Connection.Execute("Insert into NotaCredito values (@Clave, @Consecutivo)", new
+            {
+                Clave = entity.Clave,
+                Consecutivo = entity.NumeroConsecutivo
+            });
         }
+        #endregion 
     }
 }

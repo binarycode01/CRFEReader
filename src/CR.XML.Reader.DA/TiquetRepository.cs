@@ -4,35 +4,24 @@ using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class TiquetRepository : IRepository<TiqueteElectronico>
+    public class TiquetRepository : GenericDocRepository<TiqueteElectronico>
     {
-        #region Atributes
-        private readonly IDbConnection Connection;
-        #endregion
-
         #region Contructors
-        public TiquetRepository (IDbConnection connection)
-        {
-            this.Connection = connection; 
-        }
+        public TiquetRepository (IDbConnection connection) : base (connection) { }
+
+
         #endregion
 
-        #region Métodos públicos
-        public void Save(TiqueteElectronico entity)
+        #region Overrides
+        protected override string TableName { get { return "Tiquete"; } }
+
+        public override void AddDocument(TiqueteElectronico entity)
         {
-            try
+            this.Connection.Execute("Insert into Tiquete values (@Clave, @Consecutivo)", new
             {
-                this.Connection.Execute("Insert into Tiquete values (@Clave, @Consecutivo)", new
-                {
-                    Clave = entity.Clave,
-                    Consecutivo = entity.NumeroConsecutivo
-                });
-            }
-            catch (Exception ex)
-            {
-                // TODO: Log / Exception
-                throw;
-            }
+                Clave = entity.Clave,
+                Consecutivo = entity.NumeroConsecutivo
+            });
         }
         #endregion 
     }

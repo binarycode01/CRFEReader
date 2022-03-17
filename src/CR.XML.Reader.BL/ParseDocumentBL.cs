@@ -5,11 +5,11 @@ namespace CR.XML.Reader.BL
 {
     public class ParseDocumentBL : IParseDocumentBL
     {
+        #region Públic Methods
         public IDocCR Parse(string text)
         {
             try
             {
-                // TODO: Check Stream or Text usage... 
                 Type type = new ParseXMLType().GetXMLType(text);
                 
                 XmlSerializer serializer = new XmlSerializer(type);
@@ -18,7 +18,7 @@ namespace CR.XML.Reader.BL
 
                 if (document is null)
                 {
-                    throw new Exception("Invalid document");
+                    throw new Exception(Messages.InvalidXMLDocument);
                 }
 
                 return (IDocCR)document;
@@ -31,7 +31,9 @@ namespace CR.XML.Reader.BL
 
             return null;
         }
+        #endregion
 
+        #region Private Methods
         private static Stream TextToStream(string text)
         {
             var stream = new MemoryStream();
@@ -41,5 +43,6 @@ namespace CR.XML.Reader.BL
             stream.Position = 0;
             return stream;
         }
+        #endregion 
     }
 }
