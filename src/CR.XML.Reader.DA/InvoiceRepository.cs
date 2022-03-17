@@ -4,7 +4,7 @@ using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class InvoiceRepository : IInvoiceRepository
+    public class InvoiceRepository : IRepository<FacturaElectronica>
     {
         #region Atributes
         private readonly IDbConnection Connection;
@@ -22,11 +22,14 @@ namespace CR.XML.Reader.DA
         {
             try
             {
+                // TODO: Add complete structure. 
                 this.Connection.Execute("Insert into Factura values (@Clave, @Consecutivo)", new
                 {
                     Clave = invoice.Clave,
                     Consecutivo = invoice.NumeroConsecutivo
                 });
+
+                // TODO: Add child objects.
             }
             catch (Exception ex)
             {

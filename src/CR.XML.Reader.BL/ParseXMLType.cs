@@ -1,5 +1,5 @@
-﻿using System.Xml;
-using static CR.XML.Reader.BL.XmlnsCR;
+﻿using CR.XML.Reader.Entities;
+using System.Xml;
 
 namespace CR.XML.Reader.BL
 {
@@ -22,22 +22,22 @@ namespace CR.XML.Reader.BL
                 // TODO: Add another types
                 switch (xmlns)
                 {
-                    case XmlnsHacienda.FacturaElectronicaV43:
+                    case XmlnsCR.FacturaElectronicaV43:
                         return typeof(Entities.XSD.v43.Factura.FacturaElectronica);
 
-                    case XmlnsHacienda.NotaCreditoV43:
+                    case XmlnsCR.NotaCreditoV43:
                         return typeof(Entities.XSD.v43.NotaCredito.NotaCreditoElectronica);
                     
-                    case XmlnsHacienda.NotaDebitoV43:
+                    case XmlnsCR.NotaDebitoV43:
                         return typeof(Entities.XSD.v43.NotaDebito.NotaDebitoElectronica);
 
-                    case XmlnsHacienda.FacturaElectronicaExportacionV43:
+                    case XmlnsCR.FacturaElectronicaExportacionV43:
                         return typeof(Entities.XSD.v43.FacturaExportacion.FacturaElectronicaExportacion);
 
-                    case XmlnsHacienda.FacturaElectronicaCompraV43:
+                    case XmlnsCR.FacturaElectronicaCompraV43:
                         return typeof(Entities.XSD.v43.FacturaCompra.FacturaElectronicaCompra);
 
-                    case XmlnsHacienda.TiqueteV43:
+                    case XmlnsCR.TiqueteV43:
                         return typeof(Entities.XSD.v43.Tiquete.TiqueteElectronico);
 
                     default:

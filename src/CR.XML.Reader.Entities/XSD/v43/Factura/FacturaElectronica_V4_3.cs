@@ -196,7 +196,23 @@ public partial class FacturaElectronica : IDocCR {
             this.otrosField = value;
         }
     }
-}
+
+        public string Version
+        {
+            get
+            {
+                return VersionCR.v43;
+            }
+        }
+
+        public string XmlnsCR
+        {
+            get
+            {
+                return CR.XML.Reader.Entities.XmlnsCR.FacturaElectronicaCompraV43;
+            }
+        }
+    }
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]

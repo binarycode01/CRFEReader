@@ -243,6 +243,22 @@ namespace CR.XML.Reader.Entities.XSD.v43.NotaCredito
                 this.otrosField = value;
             }
         }
+
+        public string Version
+        {
+            get
+            {
+                return VersionCR.v43;
+            }
+        }
+
+        public string XmlnsCR
+        {
+            get
+            {
+                return CR.XML.Reader.Entities.XmlnsCR.NotaCreditoV43;
+            }
+        }
     }
 
     /// <remarks/>

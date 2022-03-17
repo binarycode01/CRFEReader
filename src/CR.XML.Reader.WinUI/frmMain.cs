@@ -1,5 +1,6 @@
 using CR.XML.Reader.BL;
 using CR.XML.Reader.DA;
+using CR.XML.Reader.Entities.XSD.v43.Factura;
 using CR.XML.Reader.WinUI;
 using System.Data;
 
@@ -9,14 +10,14 @@ namespace CR.XML.Reader
     {
         #region Atributes
         private readonly IParseDocumentBL ParseBL;
-        private readonly IInvoiceRepository repository;
+        private readonly ISyncDocumentBL SyncBL;
         #endregion
 
         #region Contructors
-        public frmMain(IParseDocumentBL parseBL, IInvoiceRepository repository)
+        public frmMain(IParseDocumentBL parseBL, ISyncDocumentBL syncBL)
         {
             this.ParseBL = parseBL;
-            this.repository = repository; 
+            this.SyncBL = syncBL;
             InitializeComponent();
         }
         #endregion
@@ -48,7 +49,7 @@ namespace CR.XML.Reader
 
                 string[] files = ScanFolders(txtFolder.Text);
 
-                new SyncFiles(this.ParseBL, this.repository).Process(files);
+                new SyncFiles(this.ParseBL, this.SyncBL).Process(files);
             }
             catch (Exception ex)
             {
