@@ -16,7 +16,7 @@ namespace CR.XML.Reader.DA
 
         public override void AddDocument(FacturaElectronica entity)
         {
-            this.Connection.Execute("Insert into Factura values (@Clave, @Consecutivo)", new
+            this.Connection.Execute("Insert into Factura (Clave, Consecutivo) values (@Clave, @Consecutivo)", new
             {
                 Clave = entity.Clave,
                 Consecutivo = entity.NumeroConsecutivo

@@ -48,6 +48,18 @@ namespace CR.XML.Reader.BL
                 case XmlnsCR.TiqueteV43:
                     TiquetRepository.Save((TiqueteElectronico)document);
                     break;
+                case XmlnsCR.NotaCreditoV43:
+                      CreditMemoRepository.Save((NotaCreditoElectronica)document);
+                    break;
+                case XmlnsCR.NotaDebitoV43:
+                    DebitMemoRepository.Save((NotaDebitoElectronica)document);
+                    break;
+                case XmlnsCR.FacturaElectronicaExportacionV43:
+                    ExportInvoiceRepository.Save((FacturaElectronicaExportacion)document);
+                    break;
+                case XmlnsCR.FacturaElectronicaCompraV43:
+                    PurchaseInvoiceRepository.Save((FacturaElectronicaCompra)document);
+                    break;
                 default:
                     throw new NotImplementedException(String.Format(Messages.NSInvalidType));
             }

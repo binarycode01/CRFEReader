@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CR.XML.Reader.WinUI", "CR.X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CR.XML.Reader.DA", "CR.XML.Reader.DA\CR.XML.Reader.DA.csproj", "{6E74053F-976D-4AE1-BEB7-2ED969BF6B55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CR.XML.Reader.DB", "CR.XML.Reader.DB\CR.XML.Reader.DB.csproj", "{7DB679C0-ACCA-4EE0-A2AE-EDF02D0602CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6E74053F-976D-4AE1-BEB7-2ED969BF6B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E74053F-976D-4AE1-BEB7-2ED969BF6B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E74053F-976D-4AE1-BEB7-2ED969BF6B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB679C0-ACCA-4EE0-A2AE-EDF02D0602CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB679C0-ACCA-4EE0-A2AE-EDF02D0602CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB679C0-ACCA-4EE0-A2AE-EDF02D0602CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB679C0-ACCA-4EE0-A2AE-EDF02D0602CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

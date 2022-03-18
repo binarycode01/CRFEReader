@@ -17,10 +17,10 @@ namespace CR.XML.Reader.DA
 
         public override void AddDocument(TiqueteElectronico entity)
         {
-            this.Connection.Execute("Insert into Tiquete values (@Clave, @Consecutivo)", new
+            this.Connection.Execute("Insert into Tiquete (Clave, NumeroConsecutivo) values (@Clave, @NumeroConsecutivo)", new
             {
                 Clave = entity.Clave,
-                Consecutivo = entity.NumeroConsecutivo
+                NumeroConsecutivo = entity.NumeroConsecutivo
             });
         }
         #endregion 

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentMigrator" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner.Core" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner.SQLite" Version="3.3.2" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
@@ -16,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CR.XML.Reader.BL\CR.XML.Reader.BL.csproj" />
     <ProjectReference Include="..\CR.XML.Reader.DA\CR.XML.Reader.DA.csproj" />
+    <ProjectReference Include="..\CR.XML.Reader.DB\CR.XML.Reader.DB.csproj" />
   </ItemGroup>
 
 </Project>
