@@ -1,9 +1,4 @@
 ﻿using FluentMigrator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CR.XML.Reader.DB
 {
@@ -17,12 +12,12 @@ namespace CR.XML.Reader.DB
             Delete.Table("TiqueteDetalle");
             Delete.Table("TiqueteDetalleCodigoComercial");
             Delete.Table("TiqueteImpuesto");
+            Delete.Table("TiqueteDescuento");
             Delete.Table("TiqueteOtrosCargos");
             Delete.Table("TiqueteResumen");
             Delete.Table("TiqueteInformacionReferencia");
             Delete.Table("TiqueteOtrosTexto");
             Delete.Table("TiqueteOtroContenido");
-            Delete.Table("TiqueteDescuento");
         }
 
         public override void Up()
@@ -70,13 +65,14 @@ namespace CR.XML.Reader.DB
 
             Create.Table("TiqueteDetalleCodigoComercial")
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Tiquete", "Clave")
+                .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("Tipo").AsString().Nullable()
-                .WithColumn("Codigo").AsString().Nullable()
-                .WithColumn("Cantidad").AsDecimal().Nullable();
+                .WithColumn("Codigo").AsString().Nullable();
 
             // Impuestos tabla
             Create.Table("TiqueteImpuesto")
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Tiquete", "Clave")
+                .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("Codigo").AsString().NotNullable()
                 .WithColumn("CodigoTarifa").AsString().NotNullable()
                 .WithColumn("Tarifa").AsDecimal().Nullable()
@@ -88,6 +84,12 @@ namespace CR.XML.Reader.DB
                 .WithColumn("ExoneracionFechaEmision").AsDecimal().Nullable()
                 .WithColumn("ExoneracionPorcentaje").AsString().Nullable()
                 .WithColumn("ExoneracionMonto").AsDecimal().Nullable();
+
+            Create.Table("TiqueteDescuento")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Tiquete", "Clave")
+                .WithColumn("NumeroLinea").AsString().NotNullable()
+                .WithColumn("MontoDescuento").AsDecimal().Nullable()
+                .WithColumn("NaturalezaDescuento").AsDecimal().Nullable();
 
             Create.Table("TiqueteOtrosCargos")
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Tiquete", "Clave")
@@ -135,11 +137,6 @@ namespace CR.XML.Reader.DB
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Tiquete", "Clave")
                 .WithColumn("Any").AsString().NotNullable()
                 .WithColumn("codigo").AsString().Nullable();
-
-            Create.Table("TiqueteDescuento")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Tiquete", "Clave")
-                .WithColumn("MontoDescuento").AsDecimal().Nullable()
-                .WithColumn("NaturalezaDescuento").AsDecimal().Nullable();
         }
     }
 }

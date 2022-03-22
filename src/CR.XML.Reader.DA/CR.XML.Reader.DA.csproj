@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -12,6 +12,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CR.XML.Reader.Entities\CR.XML.Reader.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Query.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Query.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Query.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Query.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

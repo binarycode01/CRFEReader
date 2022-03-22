@@ -12,12 +12,12 @@ namespace CR.XML.Reader.DB
             Delete.Table("FacturaDetalle");
             Delete.Table("FacturaDetalleCodigoComercial");
             Delete.Table("FacturaImpuesto");
+            Delete.Table("FacturaDescuento");
             Delete.Table("FacturaOtrosCargos");
             Delete.Table("FacturaResumen");
             Delete.Table("FacturaInformacionReferencia");
             Delete.Table("FacturaOtrosTexto");
             Delete.Table("FacturaOtroContenido");
-            Delete.Table("FacturaDescuento");
         }
 
         public override void Up()
@@ -65,13 +65,14 @@ namespace CR.XML.Reader.DB
 
             Create.Table("FacturaDetalleCodigoComercial")
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+                .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("Tipo").AsString().Nullable()
-                .WithColumn("Codigo").AsString().Nullable()
-                .WithColumn("Cantidad").AsDecimal().Nullable();
+                .WithColumn("Codigo").AsString().Nullable();
 
             // Impuestos tabla
             Create.Table("FacturaImpuesto")
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+                .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("Codigo").AsString().NotNullable()
                 .WithColumn("CodigoTarifa").AsString().NotNullable()
                 .WithColumn("Tarifa").AsDecimal().Nullable()
@@ -83,6 +84,12 @@ namespace CR.XML.Reader.DB
                 .WithColumn("ExoneracionFechaEmision").AsDecimal().Nullable()
                 .WithColumn("ExoneracionPorcentaje").AsString().Nullable()
                 .WithColumn("ExoneracionMonto").AsDecimal().Nullable();
+
+            Create.Table("FacturaDescuento")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+                .WithColumn("NumeroLinea").AsString().NotNullable()
+                .WithColumn("MontoDescuento").AsDecimal().Nullable()
+                .WithColumn("NaturalezaDescuento").AsDecimal().Nullable();
 
             Create.Table("FacturaOtrosCargos")
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
@@ -130,11 +137,6 @@ namespace CR.XML.Reader.DB
                 .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
                 .WithColumn("Any").AsString().NotNullable()
                 .WithColumn("codigo").AsString().Nullable();
-
-            Create.Table("FacturaDescuento")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
-                .WithColumn("MontoDescuento").AsDecimal().Nullable()
-                .WithColumn("NaturalezaDescuento").AsDecimal().Nullable();
         }
     }
 }

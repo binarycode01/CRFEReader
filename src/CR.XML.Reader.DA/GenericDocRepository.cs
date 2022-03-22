@@ -14,7 +14,8 @@ namespace CR.XML.Reader.DA
         #region Contructors
         public GenericDocRepository (IDbConnection connection)
         {
-            this.Connection = connection; 
+            this.Connection = connection;
+            //this.LoadHash();
         }
         #endregion
 
