@@ -46,6 +46,12 @@ namespace CR.XML.Reader.DA
                 EmisorNombre = entity.Emisor.Nombre,
                 EmisorIdentificacionTipo = EnumTools.GetXmlAttributeValue<IdentificacionTypeTipo>(entity.Emisor.Identificacion.Tipo),
                 EmisorIdentificacionNumero = entity.Emisor.Identificacion.Numero,
+                EmisorNombreComercial = entity.Emisor.NombreComercial,
+                EmisorUbicacionProvincia = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.Provincia : null,
+                EmisorUbicacionCanton = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.Canton : null,
+                EmisorUbicacionDistrito = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.Distrito : null,
+                EmisorUbicacionBarrio = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.Barrio : null,
+                EmisorUbicacionOtrasSenas = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.OtrasSenas : null,
                 ReceptorNombre = entity.Receptor != null ? entity.Receptor.Nombre : null,
                 ReceptorIdentificacionTipo = entity.Receptor != null ? EnumTools.GetXmlAttributeValue<IdentificacionTypeTipo>(entity.Receptor.Identificacion.Tipo) : null,
                 ReceptorIdentificacionNumero = entity.Receptor != null ? entity.Receptor.Identificacion.Numero : null,
@@ -56,8 +62,8 @@ namespace CR.XML.Reader.DA
                 ReceptorUbicacionDistrito = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.Distrito : null,
                 ReceptorUbicacionBarrio = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.Barrio : null,
                 ReceptorUbicacionOtrasSenas = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.OtrasSenas : null,
-                CondicionVenta = entity.CodigoActividad,
-                entity.PlazoCredito
+                CondicionVenta = EnumTools.GetXmlAttributeValue<TiqueteElectronicoCondicionVenta> (entity.CondicionVenta),
+                PlazoCredito = entity.PlazoCredito
             });
         }
 
@@ -109,7 +115,7 @@ namespace CR.XML.Reader.DA
                 {
                     Clave, 
                     NumeroLinea,
-                    Tipo = item.Tipo,
+                    Tipo = EnumTools.GetXmlAttributeValue<CodigoTypeTipo>(item.Tipo),
                     Codigo = item.Codigo
                 });
             }
@@ -180,7 +186,8 @@ namespace CR.XML.Reader.DA
             this.Connection.Execute(Query.InsertTiquetTotals, new
             {
                 entity.Clave,
-                CodigoTipoMoneda = entity.ResumenFactura.CodigoTipoMoneda.CodigoMoneda,
+                CodigoTipoMoneda = entity.ResumenFactura.CodigoTipoMoneda != null ? EnumTools.GetXmlAttributeValue <CodigoMonedaTypeCodigoMoneda>(entity.ResumenFactura.CodigoTipoMoneda.CodigoMoneda) : null,
+                TipoCambio = (Decimal?) (entity.ResumenFactura.CodigoTipoMoneda != null ? entity.ResumenFactura.CodigoTipoMoneda.TipoCambio : null),
                 entity.ResumenFactura.TotalServGravados,
                 entity.ResumenFactura.TotalServExentos,
                 entity.ResumenFactura.TotalServExonerado,

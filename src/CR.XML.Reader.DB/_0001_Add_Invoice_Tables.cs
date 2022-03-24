@@ -22,6 +22,7 @@ namespace CR.XML.Reader.DB
 
         public override void Up()
         {
+            // TODO: Pendiente Telefono, Correo.
             // Factura 
             Create.Table("Factura")
                 .WithColumn("Clave").AsString().PrimaryKey().NotNullable()
@@ -31,6 +32,12 @@ namespace CR.XML.Reader.DB
                 .WithColumn("EmisorNombre").AsString().Nullable()
                 .WithColumn("EmisorIdentificacionTipo").AsString().Nullable()
                 .WithColumn("EmisorIdentificacionNumero").AsString().Nullable()
+                .WithColumn("EmisorNombreComercial").AsString().Nullable()
+                .WithColumn("EmisorUbicacionProvincia").AsString().Nullable()
+                .WithColumn("EmisorUbicacionCanton").AsString().Nullable()
+                .WithColumn("EmisorUbicacionDistrito").AsString().Nullable()
+                .WithColumn("EmisorUbicacionBarrio").AsString().Nullable()
+                .WithColumn("EmisorUbicacionOtrasSenas").AsString().Nullable()
                 .WithColumn("ReceptorNombre").AsString().Nullable()
                 .WithColumn("ReceptorIdentificacionTipo").AsString().Nullable()
                 .WithColumn("ReceptorIdentificacionNumero").AsString().Nullable()

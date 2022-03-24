@@ -64,11 +64,25 @@ namespace CR.XML.Reader.DA {
         ///   Looks up a localized string similar to insert into
         ///	Factura  
         ///values 
-        ///	(@Clave, @NumeroConsecutivo, @CodigoActividad, @FechaEmision, @EmisorNombre, 
-        ///	@EmisorIdentificacionTipo, @EmisorIdentificacionNumero, @ReceptorNombre , 
-        ///	@ReceptorIdentificacionTipo , @ReceptorIdentificacionNumero, @ReceptorIdentificacionExtranjero , 
-        ///	@ReceptorNombreComercial , @ReceptorUbicacionProvincia , @ReceptorUbicacionCanton , 
-        ///	@ReceptorUbicacionDistrito, @ReceptorUbicacionBarrio, @ReceptorUbicacionOtrasSenas, @CondicionVenta, @PlazoCredito).
+        ///(
+        ///	@Clave, 
+        ///	@NumeroConsecutivo, 
+        ///	@CodigoActividad, 
+        ///	@FechaEmision, 
+        ///	@EmisorNombre, 
+        ///	@EmisorIdentificacionTipo, 
+        ///	@EmisorIdentificacionNumero, 
+        ///	@EmisorNombreComercial,
+        ///	@EmisorUbicacionProvincia,
+        ///    @EmisorUbicacionCanton, 
+        ///	@EmisorUbicacionDistrito, 
+        ///	@EmisorUbicacionBarrio,
+        ///    @EmisorUbicacionOtrasSenas, 
+        ///	@ReceptorNombre, 
+        ///	@ReceptorIdentificacionTipo, 
+        ///	@ReceptorIdentificacionNumero, 
+        ///	@ReceptorIdentificacionExtranjero, 
+        ///	@ReceptorNombreComercia [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InsertInvoice {
             get {
@@ -116,11 +130,25 @@ namespace CR.XML.Reader.DA {
         ///   Looks up a localized string similar to insert into
         ///	Tiquete
         ///values 
-        ///	(@Clave, @NumeroConsecutivo, @CodigoActividad, @FechaEmision, @EmisorNombre, 
-        ///	@EmisorIdentificacionTipo, @EmisorIdentificacionNumero, @ReceptorNombre , 
-        ///	@ReceptorIdentificacionTipo , @ReceptorIdentificacionNumero, @ReceptorIdentificacionExtranjero , 
-        ///	@ReceptorNombreComercial , @ReceptorUbicacionProvincia , @ReceptorUbicacionCanton , 
-        ///	@ReceptorUbicacionDistrito, @ReceptorUbicacionBarrio, @ReceptorUbicacionOtrasSenas, @CondicionVenta, @PlazoCredito).
+        ///(
+        ///	@Clave, 
+        ///	@NumeroConsecutivo, 
+        ///	@CodigoActividad, 
+        ///	@FechaEmision, 
+        ///	@EmisorNombre, 
+        ///	@EmisorIdentificacionTipo, 
+        ///	@EmisorIdentificacionNumero, 
+        ///	@EmisorNombreComercial,
+        ///	@EmisorUbicacionProvincia,
+        ///    @EmisorUbicacionCanton, 
+        ///	@EmisorUbicacionDistrito, 
+        ///	@EmisorUbicacionBarrio,
+        ///    @EmisorUbicacionOtrasSenas, 
+        ///	@ReceptorNombre, 
+        ///	@ReceptorIdentificacionTipo, 
+        ///	@ReceptorIdentificacionNumero, 
+        ///	@ReceptorIdentificacionExtranjero, 
+        ///	@ReceptorNombreComercial, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InsertTiquet {
             get {
@@ -298,7 +326,7 @@ namespace CR.XML.Reader.DA {
         ///Values 
         ///(
         ///	@Clave,
-        ///	@CodigoTipoMoneda,
+        ///	@CodigoTipoMoneda, @TipoCambio,
         ///	@TotalServGravados,
         ///	@TotalServExentos,
         ///	@TotalServExonerado,

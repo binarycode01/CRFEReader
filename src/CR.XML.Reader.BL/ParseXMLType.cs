@@ -13,9 +13,7 @@ namespace CR.XML.Reader.BL
                 xml.LoadXml(TextCleaner.FixEscapeCaracter(text));
 
                 if (xml.DocumentElement is null)
-                {
                     throw new Exception("Invalid root XML Element");
-                }
 
                 string xmlns = xml.DocumentElement.NamespaceURI; // TODO: Check spaces.
 

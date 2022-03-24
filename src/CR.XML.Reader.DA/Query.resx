@@ -121,11 +121,33 @@
     <value>insert into
 	Factura  
 values 
-	(@Clave, @NumeroConsecutivo, @CodigoActividad, @FechaEmision, @EmisorNombre, 
-	@EmisorIdentificacionTipo, @EmisorIdentificacionNumero, @ReceptorNombre , 
-	@ReceptorIdentificacionTipo , @ReceptorIdentificacionNumero, @ReceptorIdentificacionExtranjero , 
-	@ReceptorNombreComercial , @ReceptorUbicacionProvincia , @ReceptorUbicacionCanton , 
-	@ReceptorUbicacionDistrito, @ReceptorUbicacionBarrio, @ReceptorUbicacionOtrasSenas, @CondicionVenta, @PlazoCredito)</value>
+(
+	@Clave, 
+	@NumeroConsecutivo, 
+	@CodigoActividad, 
+	@FechaEmision, 
+	@EmisorNombre, 
+	@EmisorIdentificacionTipo, 
+	@EmisorIdentificacionNumero, 
+	@EmisorNombreComercial,
+	@EmisorUbicacionProvincia,
+    @EmisorUbicacionCanton, 
+	@EmisorUbicacionDistrito, 
+	@EmisorUbicacionBarrio,
+    @EmisorUbicacionOtrasSenas, 
+	@ReceptorNombre, 
+	@ReceptorIdentificacionTipo, 
+	@ReceptorIdentificacionNumero, 
+	@ReceptorIdentificacionExtranjero, 
+	@ReceptorNombreComercial, 
+	@ReceptorUbicacionProvincia, 
+	@ReceptorUbicacionCanton, 
+	@ReceptorUbicacionDistrito, 
+	@ReceptorUbicacionBarrio, 
+	@ReceptorUbicacionOtrasSenas, 
+	@CondicionVenta, 
+	@PlazoCredito
+)</value>
   </data>
   <data name="InsertInvoiceDetail" xml:space="preserve">
     <value>Insert 	into 
@@ -155,11 +177,33 @@ Values
     <value>insert into
 	Tiquete
 values 
-	(@Clave, @NumeroConsecutivo, @CodigoActividad, @FechaEmision, @EmisorNombre, 
-	@EmisorIdentificacionTipo, @EmisorIdentificacionNumero, @ReceptorNombre , 
-	@ReceptorIdentificacionTipo , @ReceptorIdentificacionNumero, @ReceptorIdentificacionExtranjero , 
-	@ReceptorNombreComercial , @ReceptorUbicacionProvincia , @ReceptorUbicacionCanton , 
-	@ReceptorUbicacionDistrito, @ReceptorUbicacionBarrio, @ReceptorUbicacionOtrasSenas, @CondicionVenta, @PlazoCredito)</value>
+(
+	@Clave, 
+	@NumeroConsecutivo, 
+	@CodigoActividad, 
+	@FechaEmision, 
+	@EmisorNombre, 
+	@EmisorIdentificacionTipo, 
+	@EmisorIdentificacionNumero, 
+	@EmisorNombreComercial,
+	@EmisorUbicacionProvincia,
+    @EmisorUbicacionCanton, 
+	@EmisorUbicacionDistrito, 
+	@EmisorUbicacionBarrio,
+    @EmisorUbicacionOtrasSenas, 
+	@ReceptorNombre, 
+	@ReceptorIdentificacionTipo, 
+	@ReceptorIdentificacionNumero, 
+	@ReceptorIdentificacionExtranjero, 
+	@ReceptorNombreComercial, 
+	@ReceptorUbicacionProvincia, 
+	@ReceptorUbicacionCanton, 
+	@ReceptorUbicacionDistrito, 
+	@ReceptorUbicacionBarrio, 
+	@ReceptorUbicacionOtrasSenas, 
+	@CondicionVenta, 
+	@PlazoCredito
+)</value>
   </data>
   <data name="InsertTiquetComercialCode" xml:space="preserve">
     <value>Insert into TiqueteDetalleCodigoComercial 
@@ -277,7 +321,7 @@ Values
 Values 
 (
 	@Clave,
-	@CodigoTipoMoneda,
+	@CodigoTipoMoneda, @TipoCambio,
 	@TotalServGravados,
 	@TotalServExentos,
 	@TotalServExonerado,
