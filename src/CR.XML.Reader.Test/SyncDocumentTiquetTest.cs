@@ -1,37 +1,19 @@
 ﻿using CR.XML.Reader.BL;
-using CR.XML.Reader.DA;
-using CR.XML.Reader.DB;
-using CR.XML.Reader.Entities.XSD.v43.Factura;
-using CR.XML.Reader.Entities.XSD.v43.FacturaCompra;
-using CR.XML.Reader.Entities.XSD.v43.FacturaExportacion;
-using CR.XML.Reader.Entities.XSD.v43.NotaCredito;
-using CR.XML.Reader.Entities.XSD.v43.NotaDebito;
-using CR.XML.Reader.Entities.XSD.v43.Tiquete;
 using Dapper;
 using FluentMigrator.Runner;
-using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System.Data;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace CR.XML.Reader.Test
 {
-    public class SyncDocumentTiquetTest 
+    public class SyncDocumentTiquetTest : SyncDocumentBaseAbstract
     {
         #region Constructors
-        public SyncDocumentTiquetTest (ITestOutputHelper helper)
+        public SyncDocumentTiquetTest (ITestOutputHelper helper) : base (helper)
         {
-            this.OutputHelper = helper;
-            this.dbName = $"{Guid.NewGuid()}";
         }
-        #endregion
-
-        #region Atributes
-        private string dbName { get; }
-
-        private ITestOutputHelper OutputHelper { get; }
         #endregion
 
         #region Test Methods
@@ -39,7 +21,7 @@ namespace CR.XML.Reader.Test
         public void Integral_Test_Sync_Valid_Tiquet_Simple()
         {
             // Arrange
-            ServiceProvider serviceProvider = createServiceProvider();
+            ServiceProvider serviceProvider = CreateServiceProvider();
 
             using (var scope = serviceProvider.CreateScope())
             {
@@ -71,39 +53,6 @@ namespace CR.XML.Reader.Test
         #endregion
 
         #region Private Methods
-        private ServiceProvider createServiceProvider()
-        {
-            var services = new ServiceCollection();
-
-            services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
-            services.AddScoped<ISyncDocumentBL, SyncDocumentBL>();
-
-            services.AddScoped<IRepository<FacturaElectronica>, InvoiceRepository>();
-            services.AddScoped<IRepository<TiqueteElectronico>, TiquetRepository>();
-            services.AddScoped<IRepository<NotaCreditoElectronica>, CreditMemoRepository>();
-            services.AddScoped<IRepository<NotaDebitoElectronica>, DebitMemoRepository>();
-            services.AddScoped<IRepository<FacturaElectronicaExportacion>, ExportInvoiceRepository>();
-            services.AddScoped<IRepository<FacturaElectronicaCompra>, PurchaseInvoiceRepository>();
-
-            services.AddLogging((builder) => builder.AddXUnit(OutputHelper));
-
-            var db = Guid.NewGuid().ToString();
-            services.AddLogging(l => l.AddFluentMigratorConsole()).
-                AddFluentMigratorCore().ConfigureRunner(r =>
-                r.AddSQLite()
-                .WithGlobalConnectionString($"Data Source={this.dbName}; Mode = Memory; Cache = Shared")
-                .ScanIn(typeof(_0001_Add_Invoice_Tables).Assembly).For.Migrations()
-            );
-
-            services.AddScoped<IDbConnection>((op) =>
-            {
-                return new SqliteConnection($"Data Source={this.dbName};Mode = Memory; Cache = Shared");
-            });
-
-            ServiceProvider serviceProvider = services.BuildServiceProvider();
-            return serviceProvider;
-        }
-
         private static void AssertHeader(IDbConnection connection)
         {
             var tiquetDB = connection.QueryFirstOrDefault<dynamic>("select * from Tiquete");

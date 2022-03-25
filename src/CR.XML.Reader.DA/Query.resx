@@ -149,6 +149,16 @@ values
 	@PlazoCredito
 )</value>
   </data>
+  <data name="InsertInvoiceComercialCode" xml:space="preserve">
+    <value>Insert into FacturaDetalleCodigoComercial 
+Values
+(
+	@Clave,
+	@NumeroLinea,
+	@Tipo,
+	@Codigo
+)</value>
+  </data>
   <data name="InsertInvoiceDetail" xml:space="preserve">
     <value>Insert 	into 
 	FacturaDetalle 
@@ -167,11 +177,114 @@ Values(
 	@MontoTotalLinea
 )</value>
   </data>
+  <data name="InsertInvoiceDiscount" xml:space="preserve">
+    <value>Insert into 
+	FacturaDescuento
+Values 
+(
+	@Clave,
+	@NumeroLinea,
+	@MontoDescuento,
+	@NaturalezaDescuento
+)</value>
+  </data>
+  <data name="InsertInvoiceOtherCharges" xml:space="preserve">
+    <value>Insert into FacturaOtrosCargos
+Values
+(
+	@Clave,
+	@TipoDocumento,
+	@NumeroIdentidadTercero,
+	@NombreTercero,
+	@Detalle,
+	@Porcentaje,
+	@MontoCargo
+)</value>
+  </data>
+  <data name="InsertInvoiceOtherContent" xml:space="preserve">
+    <value>insert into 
+	FacturaOtroContenido 
+Values 
+(
+	@Clave,
+	@Any,
+	@codigo
+)</value>
+  </data>
+  <data name="InsertInvoiceOtherText" xml:space="preserve">
+    <value>insert into 
+	FacturaOtrosTexto 
+Values
+(
+	@Clave,
+	@Codigo,
+	@Value
+)</value>
+  </data>
   <data name="InsertInvoicePaymentMethod" xml:space="preserve">
     <value>Insert into 
 	FacturaMedioPago
 Values 
 	(@Clave, @MedioPago)</value>
+  </data>
+  <data name="InsertInvoiceReferences" xml:space="preserve">
+    <value>Insert into 
+	FacturaInformacionReferencia 
+Values
+(
+	@Clave,
+	@TipoDoc,
+	@Numero,
+	@FechaEmision,
+	@Codigo,
+	@Razon
+)</value>
+  </data>
+  <data name="InsertInvoiceTaxDetail" xml:space="preserve">
+    <value>Insert into 
+	FacturaImpuesto 
+
+Values 
+(
+	@Clave,
+	@NumeroLinea,
+	@Codigo,
+	@CodigoTarifa,
+	@Tarifa,
+	@FactorIVA,
+	@Monto,
+	@ExoneracionTipoDocumento,
+	@ExoneracionNumeroDocumento,
+	@ExoneracionNombreInstitucion,
+	@ExoneracionFechaEmision,
+	@ExoneracionPorcentaje,
+	@ExoneracionMonto
+)</value>
+  </data>
+  <data name="InsertInvoiceTotals" xml:space="preserve">
+    <value>Insert into 
+	FacturaResumen 
+Values 
+(
+	@Clave,
+	@CodigoTipoMoneda, @TipoCambio,
+	@TotalServGravados,
+	@TotalServExentos,
+	@TotalServExonerado,
+	@TotalMercanciasGravadas,
+	@TotalMercanciasExentas,
+	@TotalMercExonerada,
+	@TotalGravado,
+	@TotalExento,
+	@TotalExonerado,
+	@TotalVenta,
+	@TotalDescuentos,
+	@TotalVentaNeta,
+	@TotalImpuesto,
+	@TotalIVADevuelto,
+	@TotalOtrosCargos,
+	@TotalComprobante
+)</value>
   </data>
   <data name="InsertTiquet" xml:space="preserve">
     <value>insert into
@@ -234,7 +347,9 @@ Values(
 )</value>
   </data>
   <data name="InsertTiquetDiscount" xml:space="preserve">
-    <value>Insert into TiqueteDescuento 
+    <value>Insert into 
+	TiqueteDescuento
+Values 
 (
 	@Clave,
 	@NumeroLinea,
@@ -260,9 +375,9 @@ Values
 	TiqueteOtroContenido 
 Values 
 (
-	Clave,
-	Any,
-	codigo
+	@Clave,
+	@Any,
+	@codigo
 )</value>
   </data>
   <data name="InsertTiquetOtherText" xml:space="preserve">

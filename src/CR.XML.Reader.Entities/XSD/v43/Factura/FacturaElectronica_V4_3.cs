@@ -209,7 +209,7 @@ public partial class FacturaElectronica : IDocCR {
         {
             get
             {
-                return CR.XML.Reader.Entities.XmlnsCR.FacturaElectronicaCompraV43;
+                return CR.XML.Reader.Entities.XmlnsCR.FacturaElectronicaV43;
             }
         }
     }

@@ -91,6 +91,22 @@ namespace CR.XML.Reader.DA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert into FacturaDetalleCodigoComercial 
+        ///Values
+        ///(
+        ///	@Clave,
+        ///	@NumeroLinea,
+        ///	@Tipo,
+        ///	@Codigo
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceComercialCode {
+            get {
+                return ResourceManager.GetString("InsertInvoiceComercialCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insert 	into 
         ///	FacturaDetalle 
         ///Values(
@@ -116,6 +132,74 @@ namespace CR.XML.Reader.DA {
         
         /// <summary>
         ///   Looks up a localized string similar to Insert into 
+        ///	FacturaDescuento
+        ///Values 
+        ///(
+        ///	@Clave,
+        ///	@NumeroLinea,
+        ///	@MontoDescuento,
+        ///	@NaturalezaDescuento
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceDiscount {
+            get {
+                return ResourceManager.GetString("InsertInvoiceDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert into FacturaOtrosCargos
+        ///Values
+        ///(
+        ///	@Clave,
+        ///	@TipoDocumento,
+        ///	@NumeroIdentidadTercero,
+        ///	@NombreTercero,
+        ///	@Detalle,
+        ///	@Porcentaje,
+        ///	@MontoCargo
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceOtherCharges {
+            get {
+                return ResourceManager.GetString("InsertInvoiceOtherCharges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insert into 
+        ///	FacturaOtroContenido 
+        ///Values 
+        ///(
+        ///	@Clave,
+        ///	@Any,
+        ///	@codigo
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceOtherContent {
+            get {
+                return ResourceManager.GetString("InsertInvoiceOtherContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insert into 
+        ///	FacturaOtrosTexto 
+        ///Values
+        ///(
+        ///	@Clave,
+        ///	@Codigo,
+        ///	@Value
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceOtherText {
+            get {
+                return ResourceManager.GetString("InsertInvoiceOtherText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert into 
         ///	FacturaMedioPago
         ///Values 
         ///	(@Clave, @MedioPago).
@@ -123,6 +207,83 @@ namespace CR.XML.Reader.DA {
         internal static string InsertInvoicePaymentMethod {
             get {
                 return ResourceManager.GetString("InsertInvoicePaymentMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert into 
+        ///	FacturaInformacionReferencia 
+        ///Values
+        ///(
+        ///	@Clave,
+        ///	@TipoDoc,
+        ///	@Numero,
+        ///	@FechaEmision,
+        ///	@Codigo,
+        ///	@Razon
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceReferences {
+            get {
+                return ResourceManager.GetString("InsertInvoiceReferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert into 
+        ///	FacturaImpuesto 
+        ///
+        ///Values 
+        ///(
+        ///	@Clave,
+        ///	@NumeroLinea,
+        ///	@Codigo,
+        ///	@CodigoTarifa,
+        ///	@Tarifa,
+        ///	@FactorIVA,
+        ///	@Monto,
+        ///	@ExoneracionTipoDocumento,
+        ///	@ExoneracionNumeroDocumento,
+        ///	@ExoneracionNombreInstitucion,
+        ///	@ExoneracionFechaEmision,
+        ///	@ExoneracionPorcentaje,
+        ///	@ExoneracionMonto
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceTaxDetail {
+            get {
+                return ResourceManager.GetString("InsertInvoiceTaxDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert into 
+        ///	FacturaResumen 
+        ///Values 
+        ///(
+        ///	@Clave,
+        ///	@CodigoTipoMoneda, @TipoCambio,
+        ///	@TotalServGravados,
+        ///	@TotalServExentos,
+        ///	@TotalServExonerado,
+        ///	@TotalMercanciasGravadas,
+        ///	@TotalMercanciasExentas,
+        ///	@TotalMercExonerada,
+        ///	@TotalGravado,
+        ///	@TotalExento,
+        ///	@TotalExonerado,
+        ///	@TotalVenta,
+        ///	@TotalDescuentos,
+        ///	@TotalVentaNeta,
+        ///	@TotalImpuesto,
+        ///	@TotalIVADevuelto,
+        ///	@TotalOtrosCargos,
+        ///	@TotalComprobante
+        ///).
+        /// </summary>
+        internal static string InsertInvoiceTotals {
+            get {
+                return ResourceManager.GetString("InsertInvoiceTotals", resourceCulture);
             }
         }
         
@@ -197,7 +358,9 @@ namespace CR.XML.Reader.DA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert into TiqueteDescuento 
+        ///   Looks up a localized string similar to Insert into 
+        ///	TiqueteDescuento
+        ///Values 
         ///(
         ///	@Clave,
         ///	@NumeroLinea,
@@ -235,9 +398,9 @@ namespace CR.XML.Reader.DA {
         ///	TiqueteOtroContenido 
         ///Values 
         ///(
-        ///	Clave,
-        ///	Any,
-        ///	codigo
+        ///	@Clave,
+        ///	@Any,
+        ///	@codigo
         ///).
         /// </summary>
         internal static string InsertTiquetOtherContent {

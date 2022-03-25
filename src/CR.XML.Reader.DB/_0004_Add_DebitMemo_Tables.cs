@@ -1,30 +1,34 @@
 ﻿using FluentMigrator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CR.XML.Reader.DB
 {
-    [Migration(1, "Add the main tables for Invoice")]
-    public class _0001_Add_Invoice_Tables : Migration
+    [Migration(4, "Add the main tables for Debit Memo")]
+    public class _0004_Add_DebitMemo_Tables : Migration
     {
         public override void Down()
         {
-            Delete.Table("Factura");
-            Delete.Table("FacturaMedioPago");
-            Delete.Table("FacturaDetalle");
-            Delete.Table("FacturaDetalleCodigoComercial");
-            Delete.Table("FacturaImpuesto");
-            Delete.Table("FacturaDescuento");
-            Delete.Table("FacturaOtrosCargos");
-            Delete.Table("FacturaResumen");
-            Delete.Table("FacturaInformacionReferencia");
-            Delete.Table("FacturaOtrosTexto");
-            Delete.Table("FacturaOtroContenido");
+            Delete.Table("NotaDebito");
+            Delete.Table("NotaDebitoMedioPago");
+            Delete.Table("NotaDebitoDetalle");
+            Delete.Table("NotaDebitoDetalleCodigoComercial");
+            Delete.Table("NotaDebitoImpuesto");
+            Delete.Table("NotaDebitoDescuento");
+            Delete.Table("NotaDebitoOtrosCargos");
+            Delete.Table("NotaDebitoResumen");
+            Delete.Table("NotaDebitoInformacionReferencia");
+            Delete.Table("NotaDebitoOtrosTexto");
+            Delete.Table("NotaDebitoOtroContenido");
         }
 
         public override void Up()
         {
-            // TODO: Pendiente Telefono, Correo.
-            // Factura 
-            Create.Table("Factura")
+            // NotaDebito 
+            Create.Table("NotaDebito")
                 .WithColumn("Clave").AsString().PrimaryKey().NotNullable()
                 .WithColumn("NumeroConsecutivo").AsString().NotNullable()
                 .WithColumn("CodigoActividad").AsString().Nullable()
@@ -51,13 +55,13 @@ namespace CR.XML.Reader.DB
                 .WithColumn("CondicionVenta").AsString().Nullable()
                 .WithColumn("PlazoCredito").AsString().Nullable();
 
-            // FacturaMedioPago
-            Create.Table("FacturaMedioPago")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave").PrimaryKey()
+            // NotaDebitoMedioPago
+            Create.Table("NotaDebitoMedioPago")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave").PrimaryKey()
                 .WithColumn("MedioPago").AsString().NotNullable().PrimaryKey();
 
-            Create.Table("FacturaDetalle")
-              .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave").PrimaryKey()
+            Create.Table("NotaDebitoDetalle")
+              .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave").PrimaryKey()
               .WithColumn("NumeroLinea").AsString().NotNullable().PrimaryKey()
               .WithColumn("Codigo").AsString().Nullable()
               .WithColumn("UnidadMedida").AsString().Nullable()
@@ -70,15 +74,15 @@ namespace CR.XML.Reader.DB
               .WithColumn("ImpuestoNeto").AsDecimal()
               .WithColumn("MontoTotalLinea").AsDecimal();
 
-            Create.Table("FacturaDetalleCodigoComercial")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoDetalleCodigoComercial")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("Tipo").AsString().Nullable()
                 .WithColumn("Codigo").AsString().Nullable();
 
             // Impuestos tabla
-            Create.Table("FacturaImpuesto")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoImpuesto")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("Codigo").AsString().NotNullable()
                 .WithColumn("CodigoTarifa").AsString().NotNullable()
@@ -92,14 +96,14 @@ namespace CR.XML.Reader.DB
                 .WithColumn("ExoneracionPorcentaje").AsString().Nullable()
                 .WithColumn("ExoneracionMonto").AsDecimal().Nullable();
 
-            Create.Table("FacturaDescuento")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoDescuento")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("NumeroLinea").AsString().NotNullable()
                 .WithColumn("MontoDescuento").AsDecimal().Nullable()
                 .WithColumn("NaturalezaDescuento").AsDecimal().Nullable();
 
-            Create.Table("FacturaOtrosCargos")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoOtrosCargos")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("TipoDocumento").AsString()
                 .WithColumn("NumeroIdentidadTercero").AsString().Nullable()
                 .WithColumn("NombreTercero").AsString().Nullable()
@@ -107,8 +111,8 @@ namespace CR.XML.Reader.DB
                 .WithColumn("Porcentaje").AsDecimal().Nullable()
                 .WithColumn("MontoCargo").AsDecimal().Nullable();
 
-            Create.Table("FacturaResumen")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave").PrimaryKey()
+            Create.Table("NotaDebitoResumen")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave").PrimaryKey()
                 .WithColumn("CodigoTipoMoneda").AsString().Nullable()
                 .WithColumn("TipoCambio").AsDecimal().Nullable()
                 .WithColumn("TotalServGravados").AsDecimal().Nullable()
@@ -128,21 +132,21 @@ namespace CR.XML.Reader.DB
                 .WithColumn("TotalOtrosCargos").AsDecimal().Nullable()
                 .WithColumn("TotalComprobante").AsDecimal().Nullable();
 
-            Create.Table("FacturaInformacionReferencia")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoInformacionReferencia")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("TipoDoc").AsString().NotNullable()
                 .WithColumn("Numero").AsString().Nullable()
                 .WithColumn("FechaEmision").AsDateTime().Nullable()
                 .WithColumn("Codigo").AsString().Nullable()
                 .WithColumn("Razon").AsString().Nullable();
 
-            Create.Table("FacturaOtrosTexto")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoOtrosTexto")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("Codigo").AsString().NotNullable()
                 .WithColumn("Value").AsString().NotNullable();
 
-            Create.Table("FacturaOtroContenido")
-                .WithColumn("Clave").AsString().NotNullable().ForeignKey("Factura", "Clave")
+            Create.Table("NotaDebitoOtroContenido")
+                .WithColumn("Clave").AsString().NotNullable().ForeignKey("NotaDebito", "Clave")
                 .WithColumn("Any").AsString().NotNullable()
                 .WithColumn("codigo").AsString().Nullable();
         }

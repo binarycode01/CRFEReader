@@ -10,16 +10,15 @@ namespace CR.XML.Reader.BL
     {
         public static string FixEscapeCaracter(string text)
         {
-            if (!string.IsNullOrWhiteSpace(text))
-            {
-                text = text.Replace("\r\n", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty);
+            if (string.IsNullOrWhiteSpace(text))
+                return text;
+            
+            text = text.Replace("\r\n", string.Empty)
+                       .Replace("\n", string.Empty)
+                       .Replace("\r", string.Empty);
 
-                // TODO: Check another invalid characters.
-
-                return text.Trim();
-            }
-
-            return string.Empty;
+            // TODO: Check another invalid characters.
+            return text.Trim();
         }
     }
 }

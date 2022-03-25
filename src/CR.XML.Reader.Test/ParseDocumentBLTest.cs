@@ -35,16 +35,5 @@ namespace CR.XML.Reader.Test
 
             Assert.Null(doc);
         }
-
-
-        private Stream StringToSteam(string text)
-        {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write(text);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
     }
 }
