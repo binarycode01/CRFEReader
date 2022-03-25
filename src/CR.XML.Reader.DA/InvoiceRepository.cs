@@ -37,7 +37,7 @@ namespace CR.XML.Reader.DA
 
         private void Header(FacturaElectronica entity)
         {
-            this.Connection.Execute(Query.InsertInvoice, new
+            this.Connection.Execute(string.Format(Query.InsertDocument, this.TableName), new
             {
                 entity.Clave,
                 entity.NumeroConsecutivo,
@@ -71,7 +71,7 @@ namespace CR.XML.Reader.DA
         {
             foreach (var item in entity.MedioPago)
             {
-                this.Connection.Execute(Query.InsertInvoicePaymentMethod, new
+                this.Connection.Execute( string.Format(Query.InsertDocumentPaymentMethod, this.TableName), new
                 {
                     Clave = entity.Clave,
                     MedioPago = EnumTools.GetXmlAttributeValue<FacturaElectronicaMedioPago>(item)
@@ -83,7 +83,7 @@ namespace CR.XML.Reader.DA
         {
             foreach (var item in entity.DetalleServicio)
             {
-                this.Connection.Execute(Query.InsertInvoiceDetail, new
+                this.Connection.Execute(string.Format (Query.InsertDocumentDetail, this.TableName), new
                 {
                     entity.Clave,
                     item.NumeroLinea,
@@ -111,7 +111,7 @@ namespace CR.XML.Reader.DA
         {
             foreach (var item in comercialCodes)
             {
-                this.Connection.Execute(Query.InsertInvoiceComercialCode, new
+                this.Connection.Execute(string.Format(Query.InsertDocumentComercialCode,this.TableName) , new
                 {
                     Clave,
                     NumeroLinea,
@@ -128,7 +128,7 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in taxes)
             {
-                this.Connection.Execute(Query.InsertInvoiceTaxDetail, new
+                this.Connection.Execute(string.Format(Query.InsertDocumentTaxDetail, this.TableName), new
                 {
                     Clave = clave,
                     NumeroLinea = numeroLinea,
@@ -154,7 +154,7 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in discounts)
             {
-                this.Connection.Execute(Query.InsertTiquetDiscount, new
+                this.Connection.Execute( string.Format(Query.InsertDocumentDiscount, TableName), new
                 {
                     Clave,
                     NumeroLinea,
@@ -171,7 +171,7 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in entity.OtrosCargos)
             {
-                this.Connection.Execute(Query.InsertInvoiceOtherCharges, new
+                this.Connection.Execute(string.Format(Query.InsertDocumentOtherCharges, TableName), new
                 {
                     entity.Clave,
                     TipoDocumento = EnumTools.GetXmlAttributeValue<OtrosCargosTypeTipoDocumento>(item.TipoDocumento),
@@ -186,7 +186,7 @@ namespace CR.XML.Reader.DA
 
         private void Totals(FacturaElectronica entity)
         {
-            this.Connection.Execute(Query.InsertInvoiceTotals, new
+            this.Connection.Execute(string.Format(Query.InsertDocumentTotals, TableName), new
             {
                 entity.Clave,
                 CodigoTipoMoneda = entity.ResumenFactura.CodigoTipoMoneda != null ? EnumTools.GetXmlAttributeValue<CodigoMonedaTypeCodigoMoneda>(entity.ResumenFactura.CodigoTipoMoneda.CodigoMoneda) : null,
@@ -217,7 +217,7 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in entity.InformacionReferencia)
             {
-                this.Connection.Execute(Query.InsertInvoiceReferences, new
+                this.Connection.Execute(string.Format(Query.InsertDocumentReferences, TableName) , new
                 {
                     entity.Clave,
                     TipoDoc = EnumTools.GetXmlAttributeValue<FacturaElectronicaInformacionReferenciaTipoDoc>(item.TipoDoc),
@@ -236,7 +236,7 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in entity.Otros.OtroTexto)
             {
-                this.Connection.Execute(Query.InsertInvoiceOtherText, new
+                this.Connection.Execute(string.Format(Query.InsertDocumentOtherText, TableName), new
                 {
                     entity.Clave,
                     Codigo = item.codigo,
@@ -252,7 +252,7 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in entity.Otros.OtroContenido)
             {
-                this.Connection.Execute(Query.InsertInvoiceOtherContent, new
+                this.Connection.Execute(string.Format(Query.InsertDocumentOtherContent, TableName), new
                 {
                     entity.Clave,
                     Any = item.Any.ToString(),

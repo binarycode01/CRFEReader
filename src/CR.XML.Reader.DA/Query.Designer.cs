@@ -62,455 +62,229 @@ namespace CR.XML.Reader.DA {
         
         /// <summary>
         ///   Looks up a localized string similar to insert into
-        ///	Factura  
+        /// {0}  
         ///values 
         ///(
-        ///	@Clave, 
-        ///	@NumeroConsecutivo, 
-        ///	@CodigoActividad, 
-        ///	@FechaEmision, 
-        ///	@EmisorNombre, 
-        ///	@EmisorIdentificacionTipo, 
-        ///	@EmisorIdentificacionNumero, 
-        ///	@EmisorNombreComercial,
-        ///	@EmisorUbicacionProvincia,
+        /// @Clave, 
+        /// @NumeroConsecutivo, 
+        /// @CodigoActividad, 
+        /// @FechaEmision, 
+        /// @EmisorNombre, 
+        /// @EmisorIdentificacionTipo, 
+        /// @EmisorIdentificacionNumero, 
+        /// @EmisorNombreComercial,
+        /// @EmisorUbicacionProvincia,
         ///    @EmisorUbicacionCanton, 
-        ///	@EmisorUbicacionDistrito, 
-        ///	@EmisorUbicacionBarrio,
+        /// @EmisorUbicacionDistrito, 
+        /// @EmisorUbicacionBarrio,
         ///    @EmisorUbicacionOtrasSenas, 
-        ///	@ReceptorNombre, 
-        ///	@ReceptorIdentificacionTipo, 
-        ///	@ReceptorIdentificacionNumero, 
-        ///	@ReceptorIdentificacionExtranjero, 
-        ///	@ReceptorNombreComercia [rest of string was truncated]&quot;;.
+        /// @ReceptorNombre, 
+        /// @ReceptorIdentificacionTipo, 
+        /// @ReceptorIdentificacionNumero, 
+        /// @ReceptorIdentificacionExtranjero, 
+        /// @ReceptorNombreComercial,         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string InsertInvoice {
+        internal static string InsertDocument {
             get {
-                return ResourceManager.GetString("InsertInvoice", resourceCulture);
+                return ResourceManager.GetString("InsertDocument", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert into FacturaDetalleCodigoComercial 
+        ///   Looks up a localized string similar to Insert into {0}DetalleCodigoComercial 
         ///Values
         ///(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@Tipo,
-        ///	@Codigo
-        ///).
+        /// @Clave,
+        /// @NumeroLinea,
+        /// @Tipo,
+        /// @Codigo
+        ///)
+        ///.
         /// </summary>
-        internal static string InsertInvoiceComercialCode {
+        internal static string InsertDocumentComercialCode {
             get {
-                return ResourceManager.GetString("InsertInvoiceComercialCode", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentComercialCode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert 	into 
-        ///	FacturaDetalle 
+        ///   Looks up a localized string similar to Insert  into 
+        /// {0}Detalle 
         ///Values(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@Codigo,
-        ///	@UnidadMedida,
-        ///	@UnidadMedidaComercial,
-        ///	@Detalle,
-        ///	@PrecioUnitario,
-        ///	@MontoTotal,
-        ///	@SubTotal,
-        ///	@BaseImponible,
-        ///	@ImpuestoNeto,
-        ///	@MontoTotalLinea
+        /// @Clave,
+        /// @NumeroLinea,
+        /// @Codigo,
+        /// @UnidadMedida,
+        /// @UnidadMedidaComercial,
+        /// @Detalle,
+        /// @PrecioUnitario,
+        /// @MontoTotal,
+        /// @SubTotal,
+        /// @BaseImponible,
+        /// @ImpuestoNeto,
+        /// @MontoTotalLinea
         ///).
         /// </summary>
-        internal static string InsertInvoiceDetail {
+        internal static string InsertDocumentDetail {
             get {
-                return ResourceManager.GetString("InsertInvoiceDetail", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentDetail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Insert into 
-        ///	FacturaDescuento
+        /// {0}Descuento
         ///Values 
         ///(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@MontoDescuento,
-        ///	@NaturalezaDescuento
+        /// @Clave,
+        /// @NumeroLinea,
+        /// @MontoDescuento,
+        /// @NaturalezaDescuento
         ///).
         /// </summary>
-        internal static string InsertInvoiceDiscount {
+        internal static string InsertDocumentDiscount {
             get {
-                return ResourceManager.GetString("InsertInvoiceDiscount", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentDiscount", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert into FacturaOtrosCargos
+        ///   Looks up a localized string similar to Insert into {0}OtrosCargos
         ///Values
         ///(
-        ///	@Clave,
-        ///	@TipoDocumento,
-        ///	@NumeroIdentidadTercero,
-        ///	@NombreTercero,
-        ///	@Detalle,
-        ///	@Porcentaje,
-        ///	@MontoCargo
+        /// @Clave,
+        /// @TipoDocumento,
+        /// @NumeroIdentidadTercero,
+        /// @NombreTercero,
+        /// @Detalle,
+        /// @Porcentaje,
+        /// @MontoCargo
         ///).
         /// </summary>
-        internal static string InsertInvoiceOtherCharges {
+        internal static string InsertDocumentOtherCharges {
             get {
-                return ResourceManager.GetString("InsertInvoiceOtherCharges", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentOtherCharges", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to insert into 
-        ///	FacturaOtroContenido 
+        /// {0}OtroContenido 
         ///Values 
         ///(
-        ///	@Clave,
-        ///	@Any,
-        ///	@codigo
+        /// @Clave,
+        /// @Any,
+        /// @codigo
         ///).
         /// </summary>
-        internal static string InsertInvoiceOtherContent {
+        internal static string InsertDocumentOtherContent {
             get {
-                return ResourceManager.GetString("InsertInvoiceOtherContent", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentOtherContent", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to insert into 
-        ///	FacturaOtrosTexto 
+        /// {0}OtrosTexto 
         ///Values
         ///(
-        ///	@Clave,
-        ///	@Codigo,
-        ///	@Value
+        /// @Clave,
+        /// @Codigo,
+        /// @Value
         ///).
         /// </summary>
-        internal static string InsertInvoiceOtherText {
+        internal static string InsertDocumentOtherText {
             get {
-                return ResourceManager.GetString("InsertInvoiceOtherText", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentOtherText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Insert into 
-        ///	FacturaMedioPago
+        /// {0}MedioPago
         ///Values 
-        ///	(@Clave, @MedioPago).
+        /// (@Clave, @MedioPago).
         /// </summary>
-        internal static string InsertInvoicePaymentMethod {
+        internal static string InsertDocumentPaymentMethod {
             get {
-                return ResourceManager.GetString("InsertInvoicePaymentMethod", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentPaymentMethod", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Insert into 
-        ///	FacturaInformacionReferencia 
+        /// {0}InformacionReferencia 
         ///Values
         ///(
-        ///	@Clave,
-        ///	@TipoDoc,
-        ///	@Numero,
-        ///	@FechaEmision,
-        ///	@Codigo,
-        ///	@Razon
+        /// @Clave,
+        /// @TipoDoc,
+        /// @Numero,
+        /// @FechaEmision,
+        /// @Codigo,
+        /// @Razon
         ///).
         /// </summary>
-        internal static string InsertInvoiceReferences {
+        internal static string InsertDocumentReferences {
             get {
-                return ResourceManager.GetString("InsertInvoiceReferences", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentReferences", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Insert into 
-        ///	FacturaImpuesto 
+        /// {0}Impuesto 
         ///
         ///Values 
         ///(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@Codigo,
-        ///	@CodigoTarifa,
-        ///	@Tarifa,
-        ///	@FactorIVA,
-        ///	@Monto,
-        ///	@ExoneracionTipoDocumento,
-        ///	@ExoneracionNumeroDocumento,
-        ///	@ExoneracionNombreInstitucion,
-        ///	@ExoneracionFechaEmision,
-        ///	@ExoneracionPorcentaje,
-        ///	@ExoneracionMonto
+        /// @Clave,
+        /// @NumeroLinea,
+        /// @Codigo,
+        /// @CodigoTarifa,
+        /// @Tarifa,
+        /// @FactorIVA,
+        /// @Monto,
+        /// @ExoneracionTipoDocumento,
+        /// @ExoneracionNumeroDocumento,
+        /// @ExoneracionNombreInstitucion,
+        /// @ExoneracionFechaEmision,
+        /// @ExoneracionPorcentaje,
+        /// @ExoneracionMonto
         ///).
         /// </summary>
-        internal static string InsertInvoiceTaxDetail {
+        internal static string InsertDocumentTaxDetail {
             get {
-                return ResourceManager.GetString("InsertInvoiceTaxDetail", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentTaxDetail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Insert into 
-        ///	FacturaResumen 
+        /// {0}Resumen 
         ///Values 
         ///(
-        ///	@Clave,
-        ///	@CodigoTipoMoneda, @TipoCambio,
-        ///	@TotalServGravados,
-        ///	@TotalServExentos,
-        ///	@TotalServExonerado,
-        ///	@TotalMercanciasGravadas,
-        ///	@TotalMercanciasExentas,
-        ///	@TotalMercExonerada,
-        ///	@TotalGravado,
-        ///	@TotalExento,
-        ///	@TotalExonerado,
-        ///	@TotalVenta,
-        ///	@TotalDescuentos,
-        ///	@TotalVentaNeta,
-        ///	@TotalImpuesto,
-        ///	@TotalIVADevuelto,
-        ///	@TotalOtrosCargos,
-        ///	@TotalComprobante
+        /// @Clave,
+        /// @CodigoTipoMoneda, @TipoCambio,
+        /// @TotalServGravados,
+        /// @TotalServExentos,
+        /// @TotalServExonerado,
+        /// @TotalMercanciasGravadas,
+        /// @TotalMercanciasExentas,
+        /// @TotalMercExonerada,
+        /// @TotalGravado,
+        /// @TotalExento,
+        /// @TotalExonerado,
+        /// @TotalVenta,
+        /// @TotalDescuentos,
+        /// @TotalVentaNeta,
+        /// @TotalImpuesto,
+        /// @TotalIVADevuelto,
+        /// @TotalOtrosCargos,
+        /// @TotalComprobante
         ///).
         /// </summary>
-        internal static string InsertInvoiceTotals {
+        internal static string InsertDocumentTotals {
             get {
-                return ResourceManager.GetString("InsertInvoiceTotals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to insert into
-        ///	Tiquete
-        ///values 
-        ///(
-        ///	@Clave, 
-        ///	@NumeroConsecutivo, 
-        ///	@CodigoActividad, 
-        ///	@FechaEmision, 
-        ///	@EmisorNombre, 
-        ///	@EmisorIdentificacionTipo, 
-        ///	@EmisorIdentificacionNumero, 
-        ///	@EmisorNombreComercial,
-        ///	@EmisorUbicacionProvincia,
-        ///    @EmisorUbicacionCanton, 
-        ///	@EmisorUbicacionDistrito, 
-        ///	@EmisorUbicacionBarrio,
-        ///    @EmisorUbicacionOtrasSenas, 
-        ///	@ReceptorNombre, 
-        ///	@ReceptorIdentificacionTipo, 
-        ///	@ReceptorIdentificacionNumero, 
-        ///	@ReceptorIdentificacionExtranjero, 
-        ///	@ReceptorNombreComercial, [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string InsertTiquet {
-            get {
-                return ResourceManager.GetString("InsertTiquet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert into TiqueteDetalleCodigoComercial 
-        ///Values
-        ///(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@Tipo,
-        ///	@Codigo
-        ///).
-        /// </summary>
-        internal static string InsertTiquetComercialCode {
-            get {
-                return ResourceManager.GetString("InsertTiquetComercialCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert 	into 
-        ///	TiqueteDetalle 
-        ///Values(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@Codigo,
-        ///	@UnidadMedida,
-        ///	@UnidadMedidaComercial,
-        ///	@Detalle,
-        ///	@PrecioUnitario,
-        ///	@MontoTotal,
-        ///	@SubTotal,
-        ///	@BaseImponible,
-        ///	@ImpuestoNeto,
-        ///	@MontoTotalLinea
-        ///).
-        /// </summary>
-        internal static string InsertTiquetDetail {
-            get {
-                return ResourceManager.GetString("InsertTiquetDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert into 
-        ///	TiqueteDescuento
-        ///Values 
-        ///(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@MontoDescuento,
-        ///	@NaturalezaDescuento
-        ///).
-        /// </summary>
-        internal static string InsertTiquetDiscount {
-            get {
-                return ResourceManager.GetString("InsertTiquetDiscount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert into TiqueteOtrosCargos
-        ///Values
-        ///(
-        ///	@Clave,
-        ///	@TipoDocumento,
-        ///	@NumeroIdentidadTercero,
-        ///	@NombreTercero,
-        ///	@Detalle,
-        ///	@Porcentaje,
-        ///	@MontoCargo
-        ///).
-        /// </summary>
-        internal static string InsertTiquetOtherCharges {
-            get {
-                return ResourceManager.GetString("InsertTiquetOtherCharges", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to insert into 
-        ///	TiqueteOtroContenido 
-        ///Values 
-        ///(
-        ///	@Clave,
-        ///	@Any,
-        ///	@codigo
-        ///).
-        /// </summary>
-        internal static string InsertTiquetOtherContent {
-            get {
-                return ResourceManager.GetString("InsertTiquetOtherContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to insert into 
-        ///	TiqueteOtrosTexto 
-        ///Values
-        ///(
-        ///	@Clave,
-        ///	@Codigo,
-        ///	@Value
-        ///).
-        /// </summary>
-        internal static string InsertTiquetOtherText {
-            get {
-                return ResourceManager.GetString("InsertTiquetOtherText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert into 
-        ///	TiqueteMedioPago
-        ///Values 
-        ///	(@Clave, @MedioPago).
-        /// </summary>
-        internal static string InsertTiquetPaymentMethod {
-            get {
-                return ResourceManager.GetString("InsertTiquetPaymentMethod", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert into 
-        ///	TiqueteInformacionReferencia 
-        ///Values
-        ///(
-        ///	@Clave,
-        ///	@TipoDoc,
-        ///	@Numero,
-        ///	@FechaEmision,
-        ///	@Codigo,
-        ///	@Razon
-        ///).
-        /// </summary>
-        internal static string InsertTiquetReferences {
-            get {
-                return ResourceManager.GetString("InsertTiquetReferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert into 
-        ///	TiqueteImpuesto 
-        ///
-        ///Values 
-        ///(
-        ///	@Clave,
-        ///	@NumeroLinea,
-        ///	@Codigo,
-        ///	@CodigoTarifa,
-        ///	@Tarifa,
-        ///	@FactorIVA,
-        ///	@Monto,
-        ///	@ExoneracionTipoDocumento,
-        ///	@ExoneracionNumeroDocumento,
-        ///	@ExoneracionNombreInstitucion,
-        ///	@ExoneracionFechaEmision,
-        ///	@ExoneracionPorcentaje,
-        ///	@ExoneracionMonto
-        ///).
-        /// </summary>
-        internal static string InsertTiquetTaxDetail {
-            get {
-                return ResourceManager.GetString("InsertTiquetTaxDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to insert into 
-        ///	TiqueteResumen 
-        ///Values 
-        ///(
-        ///	@Clave,
-        ///	@CodigoTipoMoneda, @TipoCambio,
-        ///	@TotalServGravados,
-        ///	@TotalServExentos,
-        ///	@TotalServExonerado,
-        ///	@TotalMercanciasGravadas,
-        ///	@TotalMercanciasExentas,
-        ///	@TotalMercExonerada,
-        ///	@TotalGravado,
-        ///	@TotalExento,
-        ///	@TotalExonerado,
-        ///	@TotalVenta,
-        ///	@TotalDescuentos,
-        ///	@TotalVentaNeta,
-        ///	@TotalImpuesto,
-        ///	@TotalIVADevuelto,
-        ///	@TotalOtrosCargos,
-        ///	@TotalComprobante
-        ///).
-        /// </summary>
-        internal static string InsertTiquetTotals {
-            get {
-                return ResourceManager.GetString("InsertTiquetTotals", resourceCulture);
+                return ResourceManager.GetString("InsertDocumentTotals", resourceCulture);
             }
         }
     }
