@@ -1,0 +1,4 @@
+.store/
+reportgenerator.exe
+src/CR.XML.Reader.Test/junit/
+src/coverage/
