@@ -69,7 +69,7 @@ namespace CR.XML.Reader
             services.AddFluentMigratorCore().ConfigureRunner(r =>
                 r.AddSQLite()
                 .WithGlobalConnectionString(string.Format(ConnectionString, DBPath))
-                .ScanIn(typeof(_0001_Add_Invoice_Tables).Assembly).For.Migrations()
+                .ScanIn(typeof(_0001_Add_Main_Tables).Assembly).For.Migrations()
             );
         }
         #endregion 

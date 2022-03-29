@@ -117,174 +117,89 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="InsertDocument" xml:space="preserve">
-    <value>insert into
- {0}  
-values 
-(
- @Clave, 
- @NumeroConsecutivo, 
- @CodigoActividad, 
- @FechaEmision, 
- @EmisorNombre, 
- @EmisorIdentificacionTipo, 
- @EmisorIdentificacionNumero, 
- @EmisorNombreComercial,
- @EmisorUbicacionProvincia,
-    @EmisorUbicacionCanton, 
- @EmisorUbicacionDistrito, 
- @EmisorUbicacionBarrio,
-    @EmisorUbicacionOtrasSenas, @EmisorTelefonoCodigoPais, @EmisorTelefonoNumTelefono, @EmisorCorreoElectronico,
- @ReceptorNombre, 
- @ReceptorIdentificacionTipo, 
- @ReceptorIdentificacionNumero, 
- @ReceptorIdentificacionExtranjero, 
- @ReceptorNombreComercial, 
- @ReceptorUbicacionProvincia, 
- @ReceptorUbicacionCanton, 
- @ReceptorUbicacionDistrito, 
- @ReceptorUbicacionBarrio, 
- @ReceptorUbicacionOtrasSenas, @ReceptorTelefonoCodigoPais, @ReceptorTelefonoNumTelefono, @ReceptorCorreoElectronico,
- @CondicionVenta, 
- @PlazoCredito
-)</value>
+  <data name="CreateComerialCodeView" xml:space="preserve">
+    <value>CREATE VIEW DetalleCodigoComercial as 
+SELECT  'Factura' as Tipo, * from FacturaDetalleCodigoComercial
+union all 
+select 'Tiquete' as Tipo, * from TiqueteDetalleCodigoComercial
+union all 
+select 'NotaCredito' as Tipo, * from NotaCreditoDetalleCodigoComercial
+UNION all 
+select 'NotaDebito' as Tipo, * from NotaDebitoDetalleCodigoComercial
+union all 
+select 'FacturaCompra' as Tipo, * from FacturaCompraDetalleCodigoComercial
+union all 
+select 'Exportacion' as Tipo, * from ExportacionDetalleCodigoComercial</value>
   </data>
-  <data name="InsertDocumentComercialCode" xml:space="preserve">
-    <value>Insert into {0}DetalleCodigoComercial 
-Values
-(
- @Clave,
- @NumeroLinea,
- @Tipo,
- @Codigo
-)
-</value>
+  <data name="CreateDetailView" xml:space="preserve">
+    <value>CREATE VIEW Detalle as 
+SELECT  'Factura' as Tipo, * from FacturaDetalle
+union all 
+select 'Tiquete' as Tipo, * from TiqueteDetalle
+union all 
+select 'NotaCredito' as Tipo, * from NotaCreditoDetalle
+UNION all 
+select 'NotaDebito' as Tipo, * from NotaDebitoDetalle
+union all 
+select 'FacturaCompra' as Tipo, * from FacturaCompraDetalle
+union all 
+select 'Exportacion' as Tipo, * from ExportacionDetalle</value>
   </data>
-  <data name="InsertDocumentDetail" xml:space="preserve">
-    <value>Insert  into 
- {0}Detalle 
-Values(
- @Clave,
- @NumeroLinea,
- @Codigo, @Cantidad,
- @UnidadMedida,
- @UnidadMedidaComercial,
- @Detalle,
- @PrecioUnitario,
- @MontoTotal,
- @SubTotal,
- @BaseImponible,
- @ImpuestoNeto,
- @MontoTotalLinea
-)</value>
+  <data name="CreateHeaderView" xml:space="preserve">
+    <value>CREATE VIEW Cabecera as 
+SELECT  'Factura' as Tipo, * from Factura
+union all 
+select 'Tiquete' as Tipo, * from Tiquete
+union all 
+select 'NotaCredito' as Tipo, * from NotaCredito
+UNION all 
+select 'NotaDebito' as Tipo, * from NotaDebito
+union all 
+select 'FacturaCompra' as Tipo, * from FacturaCompra
+union all 
+select 'Exportacion' as Tipo, * from Exportacion</value>
   </data>
-  <data name="InsertDocumentDiscount" xml:space="preserve">
-    <value>Insert into 
- {0}Descuento
-Values 
-(
- @Clave,
- @NumeroLinea,
- @MontoDescuento,
- @NaturalezaDescuento
-)</value>
+  <data name="CreateTaxesView" xml:space="preserve">
+    <value>CREATE VIEW DetalleImpuesto as 
+SELECT  'Factura' as Tipo, * from FacturaImpuesto
+union all 
+select 'Tiquete' as Tipo, * from TiqueteImpuesto
+union all 
+select 'NotaCredito' as Tipo, * from NotaCreditoImpuesto
+UNION all 
+select 'NotaDebito' as Tipo, * from NotaDebitoImpuesto
+union all 
+select 'FacturaCompra' as Tipo, * from FacturaCompraImpuesto
+union all 
+select 'Exportacion' as Tipo, * from ExportacionImpuesto</value>
   </data>
-  <data name="InsertDocumentOtherCharges" xml:space="preserve">
-    <value>Insert into {0}OtrosCargos
-Values
-(
- @Clave,
- @TipoDocumento,
- @NumeroIdentidadTercero,
- @NombreTercero,
- @Detalle,
- @Porcentaje,
- @MontoCargo
-)</value>
+  <data name="CreateTotalsView" xml:space="preserve">
+    <value>CREATE VIEW Resumen as 
+SELECT  'Factura' as Tipo, * from FacturaResumen
+union all 
+select 'Tiquete' as Tipo, * from TiqueteResumen
+union all 
+select 'NotaCredito' as Tipo, * from NotaCreditoResumen
+UNION all 
+select 'NotaDebito' as Tipo, * from NotaDebitoResumen
+union all 
+select 'FacturaCompra' as Tipo, * from FacturaCompraResumen
+union all 
+select 'Exportacion' as Tipo, * from ExportacionResumen</value>
   </data>
-  <data name="InsertDocumentOtherContent" xml:space="preserve">
-    <value>insert into 
- {0}OtroContenido 
-Values 
-(
- @Clave,
- @Any,
- @codigo
-)</value>
+  <data name="DropComercialCodeView" xml:space="preserve">
+    <value>DROP VIEW "main"."DetalleCodigoComercial";</value>
   </data>
-  <data name="InsertDocumentOtherText" xml:space="preserve">
-    <value>insert into 
- {0}OtrosTexto 
-Values
-(
- @Clave,
- @Codigo,
- @Value
-)</value>
+  <data name="DropDetailView" xml:space="preserve">
+    <value>DROP VIEW "main"."Detalle";</value>
   </data>
-  <data name="InsertDocumentPaymentMethod" xml:space="preserve">
-    <value>Insert into 
- {0}MedioPago
-Values 
- (@Clave, @MedioPago)</value>
+  <data name="DropHeaderView" xml:space="preserve">
+    <value>DROP VIEW "main"."Cabecera";</value>
   </data>
-  <data name="InsertDocumentReferences" xml:space="preserve">
-    <value>Insert into 
- {0}InformacionReferencia 
-Values
-(
- @Clave,
- @TipoDoc,
- @Numero,
- @FechaEmision,
- @Codigo,
- @Razon
-)</value>
+  <data name="DropTaxesView" xml:space="preserve">
+    <value>DROP VIEW "main"."DetalleImpuesto";</value>
   </data>
-  <data name="InsertDocumentTaxDetail" xml:space="preserve">
-    <value>Insert into 
- {0}Impuesto 
-
-Values 
-(
- @Clave,
- @NumeroLinea,
- @Codigo,
- @CodigoTarifa,
- @Tarifa,
- @FactorIVA,
- @Monto,
- @ExoneracionTipoDocumento,
- @ExoneracionNumeroDocumento,
- @ExoneracionNombreInstitucion,
- @ExoneracionFechaEmision,
- @ExoneracionPorcentaje,
- @ExoneracionMonto
-)</value>
-  </data>
-  <data name="InsertDocumentTotals" xml:space="preserve">
-    <value>Insert into 
- {0}Resumen 
-Values 
-(
- @Clave,
- @CodigoTipoMoneda, @TipoCambio,
- @TotalServGravados,
- @TotalServExentos,
- @TotalServExonerado,
- @TotalMercanciasGravadas,
- @TotalMercanciasExentas,
- @TotalMercExonerada,
- @TotalGravado,
- @TotalExento,
- @TotalExonerado,
- @TotalVenta,
- @TotalDescuentos,
- @TotalVentaNeta,
- @TotalImpuesto,
- @TotalIVADevuelto,
- @TotalOtrosCargos,
- @TotalComprobante
-)</value>
+  <data name="DropTotalsView" xml:space="preserve">
+    <value>DROP VIEW "main"."Resumen";</value>
   </data>
 </root>

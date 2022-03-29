@@ -10,4 +10,19 @@
     <PackageReference Include="FluentMigrator" Version="3.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="RawQuery.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RawQuery.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="RawQuery.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RawQuery.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

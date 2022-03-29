@@ -52,7 +52,7 @@ namespace CR.XML.Reader.Test
                 AddFluentMigratorCore().ConfigureRunner(r =>
                 r.AddSQLite()
                 .WithGlobalConnectionString($"Data Source={this.dbName}; Mode = Memory; Cache = Shared")
-                .ScanIn(typeof(_0001_Add_Invoice_Tables).Assembly).For.Migrations()
+                .ScanIn(typeof(_0001_Add_Main_Tables).Assembly).For.Migrations()
             );
 
             services.AddScoped<IDbConnection>((op) =>

@@ -3,7 +3,7 @@
 namespace CR.XML.Reader.DB
 {
     [Migration(1, "Add the main tables")]
-    public class _0001_Add_Invoice_Tables : Migration
+    public class _0001_Add_Main_Tables : Migration
     {
         private static readonly string[] MainTables = new string[] { "Factura", "Tiquete", "NotaCredito", "NotaDebito", "Exportacion", "FacturaCompra" };
 
@@ -44,6 +44,9 @@ namespace CR.XML.Reader.DB
                     .WithColumn("EmisorUbicacionDistrito").AsString().Nullable()
                     .WithColumn("EmisorUbicacionBarrio").AsString().Nullable()
                     .WithColumn("EmisorUbicacionOtrasSenas").AsString().Nullable()
+                    .WithColumn("EmisorTelefonoCodigoPais").AsString().Nullable()
+                    .WithColumn("EmisorTelefonoNumTelefono").AsString().Nullable()
+                    .WithColumn("EmisorCorreoElectronico").AsString().Nullable()
                     .WithColumn("ReceptorNombre").AsString().Nullable()
                     .WithColumn("ReceptorIdentificacionTipo").AsString().Nullable()
                     .WithColumn("ReceptorIdentificacionNumero").AsString().Nullable()
@@ -54,6 +57,9 @@ namespace CR.XML.Reader.DB
                     .WithColumn("ReceptorUbicacionDistrito").AsString().Nullable()
                     .WithColumn("ReceptorUbicacionBarrio").AsString().Nullable()
                     .WithColumn("ReceptorUbicacionOtrasSenas").AsString().Nullable()
+                    .WithColumn("ReceptorTelefonoCodigoPais").AsString().Nullable()
+                    .WithColumn("ReceptorTelefonoNumTelefono").AsString().Nullable()
+                    .WithColumn("ReceptorCorreoElectronico").AsString().Nullable()
                     .WithColumn("CondicionVenta").AsString().Nullable()
                     .WithColumn("PlazoCredito").AsString().Nullable();
 
@@ -65,6 +71,7 @@ namespace CR.XML.Reader.DB
                   .WithColumn("Clave").AsString().NotNullable().ForeignKey($"{table}", "Clave").PrimaryKey()
                   .WithColumn("NumeroLinea").AsString().NotNullable().PrimaryKey()
                   .WithColumn("Codigo").AsString().Nullable()
+                  .WithColumn("Cantidad").AsDecimal().Nullable()
                   .WithColumn("UnidadMedida").AsString().Nullable()
                   .WithColumn("UnidadMedidaComercial").AsString().Nullable()
                   .WithColumn("Detalle").AsString().Nullable()

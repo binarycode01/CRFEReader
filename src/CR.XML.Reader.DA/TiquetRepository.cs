@@ -52,6 +52,9 @@ namespace CR.XML.Reader.DA
                 EmisorUbicacionDistrito = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.Distrito : null,
                 EmisorUbicacionBarrio = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.Barrio : null,
                 EmisorUbicacionOtrasSenas = entity.Emisor.Ubicacion != null ? entity.Emisor.Ubicacion.OtrasSenas : null,
+                EmisorTelefonoCodigoPais = entity.Emisor.Telefono != null ? entity.Emisor.Telefono.CodigoPais : null,
+                EmisorTelefonoNumTelefono = entity.Emisor.Telefono != null ? entity.Emisor.Telefono.NumTelefono : null,
+                EmisorCorreoElectronico = entity.Emisor.CorreoElectronico,
                 ReceptorNombre = entity.Receptor != null ? entity.Receptor.Nombre : null,
                 ReceptorIdentificacionTipo = entity.Receptor != null ? EnumTools.GetXmlAttributeValue<IdentificacionTypeTipo>(entity.Receptor.Identificacion.Tipo) : null,
                 ReceptorIdentificacionNumero = entity.Receptor != null ? entity.Receptor.Identificacion.Numero : null,
@@ -62,6 +65,9 @@ namespace CR.XML.Reader.DA
                 ReceptorUbicacionDistrito = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.Distrito : null,
                 ReceptorUbicacionBarrio = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.Barrio : null,
                 ReceptorUbicacionOtrasSenas = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.OtrasSenas : null,
+                ReceptorTelefonoCodigoPais = entity.Receptor != null && entity.Receptor.Telefono != null ? entity.Receptor.Telefono.CodigoPais : null,
+                ReceptorTelefonoNumTelefono = entity.Receptor != null && entity.Receptor.Telefono != null ? entity.Receptor.Telefono.NumTelefono : null,
+                ReceptorCorreoElectronico = entity.Receptor != null ? entity.Receptor.CorreoElectronico : null,
                 CondicionVenta = EnumTools.GetXmlAttributeValue<TiqueteElectronicoCondicionVenta> (entity.CondicionVenta),
                 PlazoCredito = entity.PlazoCredito
             });
@@ -88,6 +94,7 @@ namespace CR.XML.Reader.DA
                     entity.Clave,
                     item.NumeroLinea,
                     item.Codigo,
+                    item.Cantidad,
                     UnidadMedida = item.UnidadMedida.ToString(),
                     item.UnidadMedidaComercial,
                     item.Detalle,

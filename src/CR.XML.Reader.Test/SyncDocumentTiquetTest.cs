@@ -72,6 +72,9 @@ namespace CR.XML.Reader.Test
             Assert.Equal(tiquetDB.EmisorUbicacionDistrito, "01");
             Assert.Equal(tiquetDB.EmisorUbicacionBarrio, "09");
             Assert.Equal(tiquetDB.EmisorUbicacionOtrasSenas, "CostadoEste del registro nacional.");
+            Assert.Equal(tiquetDB.EmisorTelefonoCodigoPais, "506");
+            Assert.Equal(tiquetDB.EmisorTelefonoNumTelefono, "21051600");
+            Assert.Equal(tiquetDB.EmisorCorreoElectronico, "facturaelectronica.cr@alissgroup.com");
             Assert.Equal(tiquetDB.ReceptorIdentificacionExtranjero, null);
             Assert.Equal(tiquetDB.ReceptorNombreComercial, null);
             Assert.Equal(tiquetDB.ReceptorUbicacionProvincia, null);
@@ -79,6 +82,9 @@ namespace CR.XML.Reader.Test
             Assert.Equal(tiquetDB.ReceptorUbicacionDistrito, null);
             Assert.Equal(tiquetDB.ReceptorUbicacionBarrio, null);
             Assert.Equal(tiquetDB.ReceptorUbicacionOtrasSenas, null);
+            Assert.Equal(tiquetDB.ReceptorTelefonoCodigoPais, null);
+            Assert.Equal(tiquetDB.ReceptorTelefonoNumTelefono, null);
+            Assert.Equal(tiquetDB.ReceptorCorreoElectronico, null);
             Assert.Equal(tiquetDB.CondicionVenta, "01");
             Assert.Equal(tiquetDB.PlazoCredito, null);
         }
@@ -94,6 +100,7 @@ namespace CR.XML.Reader.Test
             Assert.Equal(row1.Clave, "50601112000310134740300100005040000105120300105120");
             Assert.Equal(row1.NumeroLinea, "1");
             Assert.Equal(row1.Codigo, null);
+            Assert.Equal(row1.Cantidad, 1);
             Assert.Equal(row1.UnidadMedida, "Unid");
             Assert.Equal(row1.UnidadMedidaComercial, "UD");
             Assert.Equal(row1.Detalle, "SNOWMAN CUSHION 35.5X35.5CM/14X14IN");

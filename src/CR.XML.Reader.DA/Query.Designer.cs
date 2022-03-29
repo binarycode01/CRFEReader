@@ -77,12 +77,10 @@ namespace CR.XML.Reader.DA {
         ///    @EmisorUbicacionCanton, 
         /// @EmisorUbicacionDistrito, 
         /// @EmisorUbicacionBarrio,
-        ///    @EmisorUbicacionOtrasSenas, 
+        ///    @EmisorUbicacionOtrasSenas, @EmisorTelefonoCodigoPais, @EmisorTelefonoNumTelefono, @EmisorCorreoElectronico,
         /// @ReceptorNombre, 
         /// @ReceptorIdentificacionTipo, 
-        /// @ReceptorIdentificacionNumero, 
-        /// @ReceptorIdentificacionExtranjero, 
-        /// @ReceptorNombreComercial,         /// [rest of string was truncated]&quot;;.
+        /// @ReceptorIdentifica [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InsertDocument {
             get {
@@ -113,7 +111,7 @@ namespace CR.XML.Reader.DA {
         ///Values(
         /// @Clave,
         /// @NumeroLinea,
-        /// @Codigo,
+        /// @Codigo, @Cantidad,
         /// @UnidadMedida,
         /// @UnidadMedidaComercial,
         /// @Detalle,
