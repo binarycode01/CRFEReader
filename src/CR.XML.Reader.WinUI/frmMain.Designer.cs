@@ -39,7 +39,7 @@
             this.lblDatesData = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.lbldbFullPath = new System.Windows.Forms.ToolStripLabel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -136,7 +136,7 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripLabel2});
+            this.lbldbFullPath});
             this.toolStrip1.Location = new System.Drawing.Point(0, 425);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -151,11 +151,11 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(86, 22);
             this.toolStripLabel1.Text = "Base de datos:";
             // 
-            // toolStripLabel2
+            // lbldbFullPath
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(74, 22);
-            this.toolStripLabel2.Text = "DBNAME.DB";
+            this.lbldbFullPath.Name = "lbldbFullPath";
+            this.lbldbFullPath.Size = new System.Drawing.Size(74, 22);
+            this.lbldbFullPath.Text = "DBNAME.DB";
             // 
             // frmMain
             // 
@@ -197,6 +197,6 @@
         private ToolStripMenuItem exportarDatosToolStripMenuItem;
         private ToolStrip toolStrip1;
         private ToolStripLabel toolStripLabel1;
-        private ToolStripLabel toolStripLabel2;
+        private ToolStripLabel lbldbFullPath;
     }
 }

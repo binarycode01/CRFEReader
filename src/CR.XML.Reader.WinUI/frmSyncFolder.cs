@@ -41,8 +41,7 @@ namespace CR.XML.Reader
             }
             catch (Exception ex)
             {
-                // TODO: Exception manager.
-                throw;
+                logger.LogError(ex.Message);
             }
         }
         private void btnSync_Click(object sender, EventArgs e)

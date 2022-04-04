@@ -9,7 +9,6 @@ namespace CR.XML.Reader.WinUI
         private readonly IParseDocumentBL parser;
         private readonly ISyncDocumentBL syncBL;
         private readonly ILogger logger;
-        // TODO: Add progress bar
         #endregion
 
         #region Constructors

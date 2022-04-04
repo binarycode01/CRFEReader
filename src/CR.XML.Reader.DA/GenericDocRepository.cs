@@ -1,5 +1,6 @@
 ﻿using CR.XML.Reader.Entities;
 using Dapper;
+using Microsoft.Extensions.Logging;
 using System.Data;
 
 namespace CR.XML.Reader.DA
@@ -9,12 +10,14 @@ namespace CR.XML.Reader.DA
         #region Atributes
         public readonly IDbConnection Connection;
         private HashSet<string> keys = new HashSet<string>();
+        private readonly ILogger logger;
         #endregion
 
         #region Contructors
-        public GenericDocRepository (IDbConnection connection)
+        public GenericDocRepository (IDbConnection connection, ILogger logger)
         {
             this.Connection = connection;
+            this.logger = logger;
             this.LoadHash();
         }
         #endregion
@@ -42,9 +45,10 @@ namespace CR.XML.Reader.DA
             }
             catch (Exception ex)
             {
-                // TODO: Log / Exception
-                throw;
+                logger.LogError(ex.Message);
             }
+
+            return false;
         }
 
         

@@ -11,10 +11,11 @@ namespace CR.XML.Reader.WinUI
         private readonly ServiceProvider serviceProvider;
         private readonly ILogger<frmMain> logger;
         private readonly GeneralInfoRepository repository;
+        private readonly string dbFile;
         #endregion
 
         #region Contructors
-        public frmMain(ServiceProvider serviceProvider)
+        public frmMain(ServiceProvider serviceProvider, string dbFile)
         {
             InitializeComponent();
 
@@ -22,6 +23,8 @@ namespace CR.XML.Reader.WinUI
             logger = serviceProvider.GetRequiredService<ILogger<frmMain>>();
 
             this.repository = serviceProvider.GetRequiredService<GeneralInfoRepository>();
+
+            this.dbFile = dbFile;
         }
         #endregion
 
@@ -31,6 +34,7 @@ namespace CR.XML.Reader.WinUI
             try
             {
                 loadData(repository.GetGeneralInfo());
+                lbldbFullPath.Text = Path.GetFullPath(dbFile);
             }
             catch (Exception ex)
             {

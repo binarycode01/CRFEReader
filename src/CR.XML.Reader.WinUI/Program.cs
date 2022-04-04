@@ -18,11 +18,9 @@ using CR.XML.Reader.WinUI;
 
 namespace CR.XML.Reader
 {
-    internal static class Program
+    internal class Program
     {
         #region Contants
-        // TODO : Read from Config.
-        private const string DBPath = @".\db\InvoicesCR.db";
         private const string ConnectionString = @"Data Source={0}";
         #endregion
 
@@ -35,28 +33,29 @@ namespace CR.XML.Reader
         {
             ApplicationConfiguration.Initialize();
 
+            var config = new ConfigurationBuilder()
+            .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
             var services = new ServiceCollection();
-            ConfigureServices(services);
+            
+            ConfigureServices(services, config);
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
                 var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
                 runner.MigrateUp();
 
-                var frm = new frmMain(serviceProvider);
+                var frm = new frmMain(serviceProvider, config["dbFileLocation"].ToString());
                 Application.Run(frm);
             }
         }
         #endregion
 
         #region Private Static
-        private static void ConfigureServices(ServiceCollection services)
+        private static void ConfigureServices(ServiceCollection services, IConfiguration config)
         {
-            var config = new ConfigurationBuilder()
-            .SetBasePath(System.IO.Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .Build();
-
             services.AddScoped<frmMain>();
             services.AddScoped<frmSyncFolder>();
             services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
@@ -71,14 +70,16 @@ namespace CR.XML.Reader
             services.AddScoped<IRepository<FacturaElectronicaExportacion>, ExportInvoiceRepository>();
             services.AddScoped<IRepository<FacturaElectronicaCompra>, PurchaseInvoiceRepository>();
 
+            var dbLocation = config["dbFileLocation"].ToString();
+
             services.AddScoped<IDbConnection>((op) =>
             {
-                return new SqliteConnection(string.Format(ConnectionString, DBPath));
+                return new SqliteConnection(string.Format(ConnectionString, dbLocation));
             });
-
+            
             services.AddFluentMigratorCore().ConfigureRunner(r =>
                 r.AddSQLite()
-                .WithGlobalConnectionString(string.Format(ConnectionString, DBPath))
+                .WithGlobalConnectionString(string.Format(ConnectionString, dbLocation))
                 .ScanIn(typeof(_0001_Add_Main_Tables).Assembly).For.Migrations()
             );
 

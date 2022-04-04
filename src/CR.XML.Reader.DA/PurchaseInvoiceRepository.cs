@@ -1,6 +1,7 @@
 ﻿using CR.XML.Reader.Entities;
 using CR.XML.Reader.Entities.XSD.v43.FacturaCompra;
 using Dapper;
+using Microsoft.Extensions.Logging;
 using System.Data;
 
 namespace CR.XML.Reader.DA
@@ -8,7 +9,7 @@ namespace CR.XML.Reader.DA
     public class PurchaseInvoiceRepository : GenericDocRepository<FacturaElectronicaCompra>
     {
         #region Constructor
-        public PurchaseInvoiceRepository(IDbConnection connection) : base(connection) { }
+        public PurchaseInvoiceRepository(IDbConnection connection, ILogger<PurchaseInvoiceRepository> logger) : base(connection, logger) { }
         #endregion
 
         #region Overrides

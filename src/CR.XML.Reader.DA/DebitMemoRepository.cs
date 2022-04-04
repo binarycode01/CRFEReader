@@ -1,6 +1,7 @@
 ﻿using CR.XML.Reader.Entities;
 using CR.XML.Reader.Entities.XSD.v43.NotaDebito;
 using Dapper;
+using Microsoft.Extensions.Logging;
 using System.Data;
 
 namespace CR.XML.Reader.DA
@@ -8,7 +9,7 @@ namespace CR.XML.Reader.DA
     public class DebitMemoRepository : GenericDocRepository<NotaDebitoElectronica>
     {
         #region Contructor
-        public DebitMemoRepository(IDbConnection connection) : base(connection) { }
+        public DebitMemoRepository(IDbConnection connection, ILogger<DebitMemoRepository> logger) : base(connection, logger) { }
         #endregion
 
         #region Overrides

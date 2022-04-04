@@ -6,7 +6,7 @@ namespace CR.XML.Reader.BL
     public class ParseDocumentBL : IParseDocumentBL
     {
         #region Públic Methods
-        public IDocCR Parse(string text)
+        public IDocCR? Parse(string text)
         {
             try
             {
@@ -23,11 +23,7 @@ namespace CR.XML.Reader.BL
 
                 return (IDocCR)document;
             }
-            catch (Exception ex)
-            {
-                // TODO: logger 
-                //throw;
-            }
+            catch {}
 
             return null;
         }

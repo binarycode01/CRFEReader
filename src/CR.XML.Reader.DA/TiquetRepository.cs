@@ -1,6 +1,7 @@
 ﻿using CR.XML.Reader.Entities;
 using CR.XML.Reader.Entities.XSD.v43.Tiquete;
 using Dapper;
+using Microsoft.Extensions.Logging;
 using System.Data;
 
 namespace CR.XML.Reader.DA
@@ -8,7 +9,7 @@ namespace CR.XML.Reader.DA
     public class TiquetRepository : GenericDocRepository<TiqueteElectronico>
     {
         #region Contructors
-        public TiquetRepository (IDbConnection connection) : base (connection) { }
+        public TiquetRepository(IDbConnection connection, ILogger<TiquetRepository> logger) : base (connection, logger) { }
         #endregion
 
         #region Overrides

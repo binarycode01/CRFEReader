@@ -29,7 +29,6 @@ namespace CR.XML.Reader.DB
         {
             foreach (var table in MainTables)
             {
-                // TODO: Telefono, Correo.
                 Create.Table($"{table}")
                     .WithColumn("Clave").AsString().PrimaryKey().NotNullable()
                     .WithColumn("NumeroConsecutivo").AsString().NotNullable()

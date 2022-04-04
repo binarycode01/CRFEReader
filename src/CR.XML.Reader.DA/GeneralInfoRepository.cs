@@ -32,6 +32,9 @@ namespace CR.XML.Reader.DA
 
                 var dates = this.connection.Query<dynamic>(Query.BetweenDates).FirstOrDefault();
 
+                if (dates is null)
+                    throw new Exception("Please check DB query");
+                
                 dto.MinDate = DateTime.Parse(dates.FechaMinima); 
                 dto.MaxDate = DateTime.Parse(dates.FechaMaxima);
             }
