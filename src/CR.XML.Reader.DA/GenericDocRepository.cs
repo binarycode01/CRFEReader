@@ -27,16 +27,18 @@ namespace CR.XML.Reader.DA
         #endregion 
 
         #region Public Methods
-        public void Save(T entity)
+        public bool Save(T entity)
         {
             try
             {
                 if (keys.Contains(entity.Clave))
-                    return;
+                    return false;
 
                 this.AddDocument(entity);
 
                 keys.Add(entity.Clave);
+
+                return true;
             }
             catch (Exception ex)
             {

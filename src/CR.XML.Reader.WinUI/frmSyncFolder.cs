@@ -81,7 +81,9 @@ namespace CR.XML.Reader
 
                 string[] files = ScanFolders(txtFolder.Text);
 
-                new SyncFiles(this.ParseBL, this.SyncBL).Process(files);
+                var result = new SyncFiles(this.ParseBL, this.SyncBL, logger).Process(files);
+
+                logger.LogInformation($"Total documentos sincronizados: {result}");
             }
             catch (Exception ex)
             {

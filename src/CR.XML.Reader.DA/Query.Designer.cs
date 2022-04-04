@@ -61,6 +61,15 @@ namespace CR.XML.Reader.DA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to select min(FechaEmision) as FechaMinima,  max(FechaEmision) as FechaMaxima from Cabecera.
+        /// </summary>
+        internal static string BetweenDates {
+            get {
+                return ResourceManager.GetString("BetweenDates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to insert into
         /// {0}  
         ///values 
@@ -283,6 +292,24 @@ namespace CR.XML.Reader.DA {
         internal static string InsertDocumentTotals {
             get {
                 return ResourceManager.GetString("InsertDocumentTotals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select count( Distinct EmisorIdentificacionNumero) as Cantidad from Cabecera.
+        /// </summary>
+        internal static string TotalCompanies {
+            get {
+                return ResourceManager.GetString("TotalCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select count(1) as Cantidad from Cabecera.
+        /// </summary>
+        internal static string TotalDocuments {
+            get {
+                return ResourceManager.GetString("TotalDocuments", resourceCulture);
             }
         }
     }

@@ -61,6 +61,7 @@ namespace CR.XML.Reader
             services.AddScoped<frmSyncFolder>();
             services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
             services.AddScoped<ISyncDocumentBL, SyncDocumentBL>();
+            services.AddScoped<GeneralInfoRepository>();
 
             // Repos for earch document type
             services.AddScoped<IRepository<FacturaElectronica>, InvoiceRepository>();

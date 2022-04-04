@@ -4,6 +4,6 @@ namespace CR.XML.Reader.BL
 {
     public interface ISyncDocumentBL
     {
-        public void SyncDocument(IDocCR document);
+        public bool SyncDocument(IDocCR document);
     }
 }

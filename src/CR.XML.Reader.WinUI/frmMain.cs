@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CR.XML.Reader.DA;
+using CR.XML.Reader.Entities;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace CR.XML.Reader.WinUI
@@ -8,6 +10,7 @@ namespace CR.XML.Reader.WinUI
         #region Atributes
         private readonly ServiceProvider serviceProvider;
         private readonly ILogger<frmMain> logger;
+        private readonly GeneralInfoRepository repository;
         #endregion
 
         #region Contructors
@@ -17,10 +20,25 @@ namespace CR.XML.Reader.WinUI
 
             this.serviceProvider = serviceProvider;
             logger = serviceProvider.GetRequiredService<ILogger<frmMain>>();
+
+            this.repository = serviceProvider.GetRequiredService<GeneralInfoRepository>();
         }
         #endregion
 
         #region Events
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                loadData(repository.GetGeneralInfo());
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+            }
+        }
+
+
         private void syncFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -32,6 +50,15 @@ namespace CR.XML.Reader.WinUI
             {
                 logger.LogError(ex.Message);
             }
+        }
+        #endregion
+
+        #region Private Methods
+        private void loadData(GeneralInfoDTO generalInfoDTO)
+        {
+            this.lblCompaniesData.Text = generalInfoDTO.TotalCompanies.ToString();
+            this.lblDocumentsData.Text = generalInfoDTO.TotalDocuments.ToString();
+            this.lblDatesData.Text = $"{generalInfoDTO.MinDate.ToShortDateString()} al {generalInfoDTO.MaxDate.ToShortDateString()}";
         }
         #endregion 
     }

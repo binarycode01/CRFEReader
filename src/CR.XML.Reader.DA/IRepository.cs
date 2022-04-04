@@ -4,6 +4,6 @@ namespace CR.XML.Reader.DA
 {
     public interface IRepository <in T> where T : IDocCR
     {
-        public void Save(T entity);
+        public bool Save(T entity);
     }
 }

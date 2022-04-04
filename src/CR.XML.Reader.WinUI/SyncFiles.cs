@@ -1,4 +1,5 @@
 ﻿using CR.XML.Reader.BL;
+using Microsoft.Extensions.Logging;
 
 namespace CR.XML.Reader.WinUI
 {
@@ -7,21 +8,23 @@ namespace CR.XML.Reader.WinUI
         #region Atributes
         private readonly IParseDocumentBL parser;
         private readonly ISyncDocumentBL syncBL;
-        
+        private readonly ILogger logger;
         // TODO: Add progress bar
         #endregion
 
         #region Constructors
-        public SyncFiles(IParseDocumentBL parserBL, ISyncDocumentBL syncBL)
+        public SyncFiles(IParseDocumentBL parserBL, ISyncDocumentBL syncBL, ILogger logger)
         {
             this.parser = parserBL;
             this.syncBL = syncBL;
+            this.logger = logger;
         }
         #endregion 
 
         #region Públic Methods
-        public void Process(string[] files)
+        public int Process(string[] files)
         {
+            int result = 0;
             try
             {
                 foreach (var item in files)
@@ -31,15 +34,19 @@ namespace CR.XML.Reader.WinUI
 
                     if (doc != null)
                     {
-                        this.syncBL.SyncDocument(doc);
+                        if (this.syncBL.SyncDocument(doc))
+                        {
+                            result++;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // TODO: Logger / error
-                throw;
+                logger.LogError(ex.Message);
             }
+
+            return result;
         }
         #endregion 
     }

@@ -38,28 +38,22 @@ namespace CR.XML.Reader.BL
         #endregion 
 
         #region Public Methods
-        public void SyncDocument(IDocCR document)
+        public bool SyncDocument(IDocCR document)
         {
             switch (document.XmlnsCR)
             {
                 case XmlnsCR.FacturaElectronicaV43:
-                    InvoiceRepository.Save((FacturaElectronica)document);
-                    break;
+                    return InvoiceRepository.Save((FacturaElectronica)document);
                 case XmlnsCR.TiqueteV43:
-                    TiquetRepository.Save((TiqueteElectronico)document);
-                    break;
+                    return TiquetRepository.Save((TiqueteElectronico)document);
                 case XmlnsCR.NotaCreditoV43:
-                      CreditMemoRepository.Save((NotaCreditoElectronica)document);
-                    break;
+                    return CreditMemoRepository.Save((NotaCreditoElectronica)document);
                 case XmlnsCR.NotaDebitoV43:
-                    DebitMemoRepository.Save((NotaDebitoElectronica)document);
-                    break;
+                    return DebitMemoRepository.Save((NotaDebitoElectronica)document);
                 case XmlnsCR.FacturaElectronicaExportacionV43:
-                    ExportInvoiceRepository.Save((FacturaElectronicaExportacion)document);
-                    break;
+                    return ExportInvoiceRepository.Save((FacturaElectronicaExportacion)document);
                 case XmlnsCR.FacturaElectronicaCompraV43:
-                    PurchaseInvoiceRepository.Save((FacturaElectronicaCompra)document);
-                    break;
+                    return PurchaseInvoiceRepository.Save((FacturaElectronicaCompra)document);
                 default:
                     throw new NotImplementedException(String.Format(Messages.NSInvalidType));
             }

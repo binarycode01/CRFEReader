@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BetweenDates" xml:space="preserve">
+    <value>select min(FechaEmision) as FechaMinima,  max(FechaEmision) as FechaMaxima from Cabecera</value>
+  </data>
   <data name="InsertDocument" xml:space="preserve">
     <value>insert into
  {0}  
@@ -286,5 +289,11 @@ Values
  @TotalOtrosCargos,
  @TotalComprobante
 )</value>
+  </data>
+  <data name="TotalCompanies" xml:space="preserve">
+    <value>select count( Distinct EmisorIdentificacionNumero) as Cantidad from Cabecera</value>
+  </data>
+  <data name="TotalDocuments" xml:space="preserve">
+    <value>select count(1) as Cantidad from Cabecera</value>
   </data>
 </root>

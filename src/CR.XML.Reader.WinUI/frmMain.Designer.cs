@@ -30,13 +30,13 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.syncFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTotalCompanies = new System.Windows.Forms.Label();
             this.lblTotalDocuments = new System.Windows.Forms.Label();
             this.lblMinDateMaxDate = new System.Windows.Forms.Label();
             this.lblCompaniesData = new System.Windows.Forms.Label();
-            this.lblDocumentsDate = new System.Windows.Forms.Label();
+            this.lblDocumentsData = new System.Windows.Forms.Label();
             this.lblDatesData = new System.Windows.Forms.Label();
-            this.exportarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
@@ -61,6 +61,12 @@
             this.syncFilesToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.syncFilesToolStripMenuItem.Text = "Sincronizar Archivos";
             this.syncFilesToolStripMenuItem.Click += new System.EventHandler(this.syncFilesToolStripMenuItem_Click);
+            // 
+            // exportarDatosToolStripMenuItem
+            // 
+            this.exportarDatosToolStripMenuItem.Name = "exportarDatosToolStripMenuItem";
+            this.exportarDatosToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.exportarDatosToolStripMenuItem.Text = "Exportar Datos";
             // 
             // lblTotalCompanies
             // 
@@ -95,35 +101,35 @@
             // lblCompaniesData
             // 
             this.lblCompaniesData.AutoSize = true;
-            this.lblCompaniesData.Location = new System.Drawing.Point(272, 50);
+            this.lblCompaniesData.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCompaniesData.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblCompaniesData.Location = new System.Drawing.Point(272, 26);
             this.lblCompaniesData.Name = "lblCompaniesData";
-            this.lblCompaniesData.Size = new System.Drawing.Size(13, 15);
+            this.lblCompaniesData.Size = new System.Drawing.Size(37, 45);
             this.lblCompaniesData.TabIndex = 4;
             this.lblCompaniesData.Text = "0";
             // 
-            // lblDocumentsDate
+            // lblDocumentsData
             // 
-            this.lblDocumentsDate.AutoSize = true;
-            this.lblDocumentsDate.Location = new System.Drawing.Point(272, 120);
-            this.lblDocumentsDate.Name = "lblDocumentsDate";
-            this.lblDocumentsDate.Size = new System.Drawing.Size(13, 15);
-            this.lblDocumentsDate.TabIndex = 5;
-            this.lblDocumentsDate.Text = "0";
+            this.lblDocumentsData.AutoSize = true;
+            this.lblDocumentsData.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDocumentsData.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblDocumentsData.Location = new System.Drawing.Point(272, 95);
+            this.lblDocumentsData.Name = "lblDocumentsData";
+            this.lblDocumentsData.Size = new System.Drawing.Size(37, 45);
+            this.lblDocumentsData.TabIndex = 5;
+            this.lblDocumentsData.Text = "0";
             // 
             // lblDatesData
             // 
             this.lblDatesData.AutoSize = true;
-            this.lblDatesData.Location = new System.Drawing.Point(272, 197);
+            this.lblDatesData.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDatesData.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lblDatesData.Location = new System.Drawing.Point(272, 172);
             this.lblDatesData.Name = "lblDatesData";
-            this.lblDatesData.Size = new System.Drawing.Size(118, 15);
+            this.lblDatesData.Size = new System.Drawing.Size(324, 45);
             this.lblDatesData.TabIndex = 6;
             this.lblDatesData.Text = "1-feb-22 al 4-abril-22";
-            // 
-            // exportarDatosToolStripMenuItem
-            // 
-            this.exportarDatosToolStripMenuItem.Name = "exportarDatosToolStripMenuItem";
-            this.exportarDatosToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.exportarDatosToolStripMenuItem.Text = "Exportar Datos";
             // 
             // toolStrip1
             // 
@@ -158,7 +164,7 @@
             this.ClientSize = new System.Drawing.Size(617, 450);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lblDatesData);
-            this.Controls.Add(this.lblDocumentsDate);
+            this.Controls.Add(this.lblDocumentsData);
             this.Controls.Add(this.lblCompaniesData);
             this.Controls.Add(this.lblMinDateMaxDate);
             this.Controls.Add(this.lblTotalDocuments);
@@ -168,6 +174,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Documentos Electrónicos Costa Rica";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -185,7 +192,7 @@
         private Label lblTotalDocuments;
         private Label lblMinDateMaxDate;
         private Label lblCompaniesData;
-        private Label lblDocumentsDate;
+        private Label lblDocumentsData;
         private Label lblDatesData;
         private ToolStripMenuItem exportarDatosToolStripMenuItem;
         private ToolStrip toolStrip1;
