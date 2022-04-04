@@ -33,7 +33,9 @@ namespace CR.XML.Reader.DA
 
             OtherContent(entity);
         }
+        #endregion
 
+        #region Private Methods
         private void Header(NotaCreditoElectronica entity)
         {
             this.Connection.Execute(string.Format(Query.InsertDocument, this.TableName), new

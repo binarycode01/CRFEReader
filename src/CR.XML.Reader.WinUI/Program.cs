@@ -9,8 +9,12 @@ using CR.XML.Reader.Entities.XSD.v43.NotaDebito;
 using CR.XML.Reader.Entities.XSD.v43.Tiquete;
 using FluentMigrator.Runner;
 using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Data;
+using NLog.Extensions.Logging;
+using CR.XML.Reader.WinUI;
 
 namespace CR.XML.Reader
 {
@@ -39,17 +43,22 @@ namespace CR.XML.Reader
                 var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
                 runner.MigrateUp();
 
-                var frmMain = serviceProvider.GetRequiredService<frmMain>();
-                Application.Run(frmMain);
+                var frm = new frmMain(serviceProvider);
+                Application.Run(frm);
             }
-
         }
         #endregion
 
         #region Private Static
         private static void ConfigureServices(ServiceCollection services)
         {
+            var config = new ConfigurationBuilder()
+            .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
             services.AddScoped<frmMain>();
+            services.AddScoped<frmSyncFolder>();
             services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
             services.AddScoped<ISyncDocumentBL, SyncDocumentBL>();
 
@@ -71,6 +80,13 @@ namespace CR.XML.Reader
                 .WithGlobalConnectionString(string.Format(ConnectionString, DBPath))
                 .ScanIn(typeof(_0001_Add_Main_Tables).Assembly).For.Migrations()
             );
+
+            services.AddLogging(builder =>
+            {
+                builder.ClearProviders();
+                builder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                builder.AddNLog(config);
+            });
         }
         #endregion 
     }

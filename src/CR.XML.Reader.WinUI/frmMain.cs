@@ -1,72 +1,38 @@
-using CR.XML.Reader.BL;
-using CR.XML.Reader.DA;
-using CR.XML.Reader.Entities.XSD.v43.Factura;
-using CR.XML.Reader.WinUI;
-using System.Data;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
-namespace CR.XML.Reader
+namespace CR.XML.Reader.WinUI
 {
     public partial class frmMain : Form
     {
         #region Atributes
-        private readonly IParseDocumentBL ParseBL;
-        private readonly ISyncDocumentBL SyncBL;
+        private readonly ServiceProvider serviceProvider;
+        private readonly ILogger<frmMain> logger;
         #endregion
 
         #region Contructors
-        public frmMain(IParseDocumentBL parseBL, ISyncDocumentBL syncBL)
+        public frmMain(ServiceProvider serviceProvider)
         {
-            this.ParseBL = parseBL;
-            this.SyncBL = syncBL;
             InitializeComponent();
+
+            this.serviceProvider = serviceProvider;
+            logger = serviceProvider.GetRequiredService<ILogger<frmMain>>();
         }
         #endregion
 
         #region Events
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void syncFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                var result = this.fdlScanFolder.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    txtFolder.Text = fdlScanFolder.SelectedPath;
-                }
+                var frm = serviceProvider.GetRequiredService<frmSyncFolder>();
+                frm.ShowDialog();
             }
             catch (Exception ex)
             {
-                // TODO: Exception manager.
-                throw;
+                logger.LogError(ex.Message);
             }
         }
-        private void btnSync_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!Directory.Exists(txtFolder.Text))
-                    throw new Exception("Por favor verifique la ruta");
-
-                string[] files = ScanFolders(txtFolder.Text);
-
-                new SyncFiles(this.ParseBL, this.SyncBL).Process(files);
-            }
-            catch (Exception ex)
-            {
-                // TODO: Exception manager.
-                throw;
-            }
-        }
-        #endregion
-
-        #region Methods
-        private string[] ScanFolders(string path)
-        {
-            // TODO: Check performance.
-            string[] files = Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories);
-
-            return files;
-        }
-        #endregion
+        #endregion 
     }
 }
