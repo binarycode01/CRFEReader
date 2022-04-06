@@ -34,9 +34,9 @@ namespace CR.XML.Reader.DA
 
                 if (dates is null)
                     throw new Exception("Please check DB query");
-                
-                dto.MinDate = DateTime.Parse(dates.FechaMinima); 
-                dto.MaxDate = DateTime.Parse(dates.FechaMaxima);
+
+                dto.MinDate = dates.FechaMinima is null ? new DateTime(1900, 1, 1) : DateTime.Parse(dates.FechaMinima); 
+                dto.MaxDate = dates.FechaMaxima is null ? new DateTime(1900, 1, 1) : DateTime.Parse(dates.FechaMaxima);
             }
             catch (Exception ex)
             {

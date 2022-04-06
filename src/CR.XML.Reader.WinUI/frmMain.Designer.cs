@@ -30,7 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.syncFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTotalCompanies = new System.Windows.Forms.Label();
             this.lblTotalDocuments = new System.Windows.Forms.Label();
             this.lblMinDateMaxDate = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.syncFilesToolStripMenuItem,
-            this.exportarDatosToolStripMenuItem});
+            this.exportDataToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(617, 24);
@@ -62,11 +62,12 @@
             this.syncFilesToolStripMenuItem.Text = "Sincronizar Archivos";
             this.syncFilesToolStripMenuItem.Click += new System.EventHandler(this.syncFilesToolStripMenuItem_Click);
             // 
-            // exportarDatosToolStripMenuItem
+            // exportDataToolStripMenuItem
             // 
-            this.exportarDatosToolStripMenuItem.Name = "exportarDatosToolStripMenuItem";
-            this.exportarDatosToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.exportarDatosToolStripMenuItem.Text = "Exportar Datos";
+            this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.exportDataToolStripMenuItem.Text = "Exportar Datos";
+            this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
             // 
             // lblTotalCompanies
             // 
@@ -194,7 +195,7 @@
         private Label lblCompaniesData;
         private Label lblDocumentsData;
         private Label lblDatesData;
-        private ToolStripMenuItem exportarDatosToolStripMenuItem;
+        private ToolStripMenuItem exportDataToolStripMenuItem;
         private ToolStrip toolStrip1;
         private ToolStripLabel toolStripLabel1;
         private ToolStripLabel lbldbFullPath;

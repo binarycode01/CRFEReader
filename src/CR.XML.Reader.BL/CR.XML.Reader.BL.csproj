@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="6.0.2-beta" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CR.XML.Reader.DA\CR.XML.Reader.DA.csproj" />
     <ProjectReference Include="..\CR.XML.Reader.Entities\CR.XML.Reader.Entities.csproj" />
   </ItemGroup>

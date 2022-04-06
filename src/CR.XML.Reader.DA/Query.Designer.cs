@@ -70,6 +70,137 @@ namespace CR.XML.Reader.DA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to select 
+        ///	C.Tipo,
+        ///	C.Clave,
+        ///	C.NumeroConsecutivo,
+        ///	C.CodigoActividad,
+        ///	C.FechaEmision,
+        ///	C.EmisorNombre,
+        ///	C.EmisorIdentificacionTipo,
+        ///	C.EmisorIdentificacionNumero,
+        ///	C.EmisorNombreComercial,
+        ///	C.EmisorUbicacionProvincia,
+        ///	C.EmisorUbicacionCanton,
+        ///	C.EmisorUbicacionDistrito,
+        ///	C.EmisorUbicacionBarrio,
+        ///	C.EmisorUbicacionOtrasSenas,
+        ///	C.EmisorTelefonoCodigoPais,
+        ///	C.EmisorTelefonoNumTelefono,
+        ///	C.EmisorCorreoElectronico,
+        ///	C.ReceptorNombre,
+        ///	C.ReceptorIdentificacionTipo,
+        ///	C.ReceptorIdentificacionNu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ExportExpensesHeader {
+            get {
+                return ResourceManager.GetString("ExportExpensesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select 
+        ///	DI.Clave, DI.Codigo, DI.Tarifa,  cast( sum(DI.Monto) as Real) as Total 
+        ///from 
+        ///	DetalleImpuesto as DI 
+        ///INNER JOIN	
+        ///	Cabecera as C
+        ///on 
+        ///	DI.Clave = C.Clave
+        ///WHERE 
+        ///	C.ReceptorIdentificacionNumero = @Id AND
+        ///	C.FechaEmision &gt;= @startDate and 
+        ///	c.FechaEmision &lt;= @endDate
+        ///	
+        ///group by 
+        ///	DI.Clave, DI.CodigoTarifa.
+        /// </summary>
+        internal static string ExportExpensesTaxes {
+            get {
+                return ResourceManager.GetString("ExportExpensesTaxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select 
+        ///	C.Tipo,
+        ///	C.Clave,
+        ///	C.NumeroConsecutivo,
+        ///	C.CodigoActividad,
+        ///	C.FechaEmision,
+        ///	C.EmisorNombre,
+        ///	C.EmisorIdentificacionTipo,
+        ///	C.EmisorIdentificacionNumero,
+        ///	C.EmisorNombreComercial,
+        ///	C.EmisorUbicacionProvincia,
+        ///	C.EmisorUbicacionCanton,
+        ///	C.EmisorUbicacionDistrito,
+        ///	C.EmisorUbicacionBarrio,
+        ///	C.EmisorUbicacionOtrasSenas,
+        ///	C.EmisorTelefonoCodigoPais,
+        ///	C.EmisorTelefonoNumTelefono,
+        ///	C.EmisorCorreoElectronico,
+        ///	C.ReceptorNombre,
+        ///	C.ReceptorIdentificacionTipo,
+        ///	C.ReceptorIdentificacionNu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ExportSalesHeader {
+            get {
+                return ResourceManager.GetString("ExportSalesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select 
+        ///	DI.Clave, DI.Codigo, DI.Tarifa,  cast( sum(DI.Monto) as Real) as Total 
+        ///from 
+        ///	DetalleImpuesto as DI 
+        ///INNER JOIN	
+        ///	Cabecera as C
+        ///on 
+        ///	DI.Clave = C.Clave
+        ///WHERE 
+        ///	C.EmisorIdentificacionNumero = @Id AND
+        ///	C.FechaEmision &gt;= @startDate and 
+        ///	c.FechaEmision &lt;= @endDate
+        ///	
+        ///group by 
+        ///	DI.Clave, DI.CodigoTarifa.
+        /// </summary>
+        internal static string ExportSalesTaxes {
+            get {
+                return ResourceManager.GetString("ExportSalesTaxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select 
+        ///	Identification, Identification || &quot; - &quot; || Name as Name, Quantity 
+        ///from 
+        ///(
+        ///	select  
+        ///		EmisorIdentificacionNumero as Identification, EmisorNombre  as Name, count(1) as Quantity
+        ///	from 
+        ///		Cabecera
+        ///	group by 	
+        ///		EmisorIdentificacionNumero, EmisorNombre
+        ///	UNION
+        ///	select 
+        ///		ReceptorIdentificacionNumero as Identification, ReceptorNombre as Name, count(1) as Quantity
+        ///	from 
+        ///		Cabecera
+        ///	group by 	
+        ///		ReceptorIdentificacionNumero, ReceptorNombre
+        ///) as X
+        ///order by 3 desc.
+        /// </summary>
+        internal static string GetAllCompanies {
+            get {
+                return ResourceManager.GetString("GetAllCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to insert into
         /// {0}  
         ///values 

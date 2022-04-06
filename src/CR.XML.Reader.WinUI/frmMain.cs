@@ -42,12 +42,25 @@ namespace CR.XML.Reader.WinUI
             }
         }
 
-
         private void syncFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
                 var frm = serviceProvider.GetRequiredService<frmSyncFolder>();
+                frm.ShowDialog();
+                loadData(repository.GetGeneralInfo());
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+            }
+        }
+
+        private void exportDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frm = serviceProvider.GetRequiredService<frmExportData>();
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -64,6 +77,6 @@ namespace CR.XML.Reader.WinUI
             this.lblDocumentsData.Text = generalInfoDTO.TotalDocuments.ToString();
             this.lblDatesData.Text = $"{generalInfoDTO.MinDate.ToShortDateString()} al {generalInfoDTO.MaxDate.ToShortDateString()}";
         }
-        #endregion 
+        #endregion
     }
 }

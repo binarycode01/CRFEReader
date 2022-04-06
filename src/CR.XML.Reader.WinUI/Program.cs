@@ -61,6 +61,10 @@ namespace CR.XML.Reader
             services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
             services.AddScoped<ISyncDocumentBL, SyncDocumentBL>();
             services.AddScoped<GeneralInfoRepository>();
+            services.AddScoped<frmExportData>();
+            services.AddScoped<CompanyRepository>();
+            services.AddScoped<ExportDocumentsBL>();
+            services.AddScoped<ExportRepository>();
 
             // Repos for earch document type
             services.AddScoped<IRepository<FacturaElectronica>, InvoiceRepository>();

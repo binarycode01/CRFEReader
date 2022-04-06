@@ -120,6 +120,181 @@
   <data name="BetweenDates" xml:space="preserve">
     <value>select min(FechaEmision) as FechaMinima,  max(FechaEmision) as FechaMaxima from Cabecera</value>
   </data>
+  <data name="ExportExpensesHeader" xml:space="preserve">
+    <value>select 
+	C.Tipo,
+	C.Clave,
+	C.NumeroConsecutivo,
+	C.CodigoActividad,
+	C.FechaEmision,
+	C.EmisorNombre,
+	C.EmisorIdentificacionTipo,
+	C.EmisorIdentificacionNumero,
+	C.EmisorNombreComercial,
+	C.EmisorUbicacionProvincia,
+	C.EmisorUbicacionCanton,
+	C.EmisorUbicacionDistrito,
+	C.EmisorUbicacionBarrio,
+	C.EmisorUbicacionOtrasSenas,
+	C.EmisorTelefonoCodigoPais,
+	C.EmisorTelefonoNumTelefono,
+	C.EmisorCorreoElectronico,
+	C.ReceptorNombre,
+	C.ReceptorIdentificacionTipo,
+	C.ReceptorIdentificacionNumero,
+	C.ReceptorIdentificacionExtranjero,
+	C.ReceptorNombreComercial,
+	C.ReceptorUbicacionProvincia,
+	C.ReceptorUbicacionCanton,
+	C.ReceptorUbicacionDistrito,
+	C.ReceptorUbicacionBarrio,
+	C.ReceptorUbicacionOtrasSenas,
+	C.ReceptorTelefonoCodigoPais,
+	C.ReceptorTelefonoNumTelefono,
+	C.ReceptorCorreoElectronico,
+	C.PlazoCredito,
+	C.CondicionVenta,
+	R.CodigoTipoMoneda,
+	R.TipoCambio,
+	cast(R.TotalServExonerado as Real) as TotalServExonerado,
+	cast(R.TotalServExentos as Real) as TotalServExentos,
+	cast(R.TotalMercanciasGravadas as Real) as TotalMercanciasGravadas,
+	cast(R.TotalMercanciasExentas as Real) as TotalMercanciasExentas,
+	cast(R.TotalMercExonerada as Real) as TotalMercExonerada,
+	cast(R.TotalGravado as Real) as TotalGravado,
+	cast(R.TotalExento as Real) as TotalExento,
+	cast(R.TotalExonerado as Real) as TotalExonerado,
+	cast(R.TotalVenta as Real) as TotalVenta,
+	cast (R.TotalImpuesto as Real) as TotalImpuesto,
+	cast(R.TotalIVADevuelto as Real) as TotalIVADevuelto,
+	cast(R.TotalOtrosCargos as Real) as TotalOtrosCargos,
+	cast(R.TotalComprobante as Real) as TotalComprobante
+from 
+	Cabecera  as C
+inner join 
+	Resumen as R
+on 
+	C.Clave = R.Clave
+where 
+	C.ReceptorIdentificacionNumero = @Id and 
+	C.FechaEmision &gt;= @startDate and 
+	C.FechaEmision &lt;= @endDate</value>
+  </data>
+  <data name="ExportExpensesTaxes" xml:space="preserve">
+    <value>select 
+	DI.Clave, DI.Codigo, DI.Tarifa,  cast( sum(DI.Monto) as Real) as Total 
+from 
+	DetalleImpuesto as DI 
+INNER JOIN	
+	Cabecera as C
+on 
+	DI.Clave = C.Clave
+WHERE 
+	C.ReceptorIdentificacionNumero = @Id AND
+	C.FechaEmision &gt;= @startDate and 
+	c.FechaEmision &lt;= @endDate
+	
+group by 
+	DI.Clave, DI.CodigoTarifa</value>
+  </data>
+  <data name="ExportSalesHeader" xml:space="preserve">
+    <value>select 
+	C.Tipo,
+	C.Clave,
+	C.NumeroConsecutivo,
+	C.CodigoActividad,
+	C.FechaEmision,
+	C.EmisorNombre,
+	C.EmisorIdentificacionTipo,
+	C.EmisorIdentificacionNumero,
+	C.EmisorNombreComercial,
+	C.EmisorUbicacionProvincia,
+	C.EmisorUbicacionCanton,
+	C.EmisorUbicacionDistrito,
+	C.EmisorUbicacionBarrio,
+	C.EmisorUbicacionOtrasSenas,
+	C.EmisorTelefonoCodigoPais,
+	C.EmisorTelefonoNumTelefono,
+	C.EmisorCorreoElectronico,
+	C.ReceptorNombre,
+	C.ReceptorIdentificacionTipo,
+	C.ReceptorIdentificacionNumero,
+	C.ReceptorIdentificacionExtranjero,
+	C.ReceptorNombreComercial,
+	C.ReceptorUbicacionProvincia,
+	C.ReceptorUbicacionCanton,
+	C.ReceptorUbicacionDistrito,
+	C.ReceptorUbicacionBarrio,
+	C.ReceptorUbicacionOtrasSenas,
+	C.ReceptorTelefonoCodigoPais,
+	C.ReceptorTelefonoNumTelefono,
+	C.ReceptorCorreoElectronico,
+	C.PlazoCredito,
+	C.CondicionVenta,
+	R.CodigoTipoMoneda,
+	R.TipoCambio,
+	cast(R.TotalServExonerado as Real) as TotalServExonerado,
+	cast(R.TotalServExentos as Real) as TotalServExentos,
+	cast(R.TotalMercanciasGravadas as Real) as TotalMercanciasGravadas,
+	cast(R.TotalMercanciasExentas as Real) as TotalMercanciasExentas,
+	cast(R.TotalMercExonerada as Real) as TotalMercExonerada,
+	cast(R.TotalGravado as Real) as TotalGravado,
+	cast(R.TotalExento as Real) as TotalExento,
+	cast(R.TotalExonerado as Real) as TotalExonerado,
+	cast(R.TotalVenta as Real) as TotalVenta,
+	cast (R.TotalImpuesto as Real) as TotalImpuesto,
+	cast(R.TotalIVADevuelto as Real) as TotalIVADevuelto,
+	cast(R.TotalOtrosCargos as Real) as TotalOtrosCargos,
+	cast(R.TotalComprobante as Real) as TotalComprobante
+from 
+	Cabecera  as C
+inner join 
+	Resumen as R
+on 
+	C.Clave = R.Clave
+where 
+	C.EmisorIdentificacionNumero = @Id and 
+	C.FechaEmision &gt;= @startDate and 
+	C.FechaEmision &lt;= @endDate</value>
+  </data>
+  <data name="ExportSalesTaxes" xml:space="preserve">
+    <value>select 
+	DI.Clave, DI.Codigo, DI.Tarifa,  cast( sum(DI.Monto) as Real) as Total 
+from 
+	DetalleImpuesto as DI 
+INNER JOIN	
+	Cabecera as C
+on 
+	DI.Clave = C.Clave
+WHERE 
+	C.EmisorIdentificacionNumero = @Id AND
+	C.FechaEmision &gt;= @startDate and 
+	c.FechaEmision &lt;= @endDate
+	
+group by 
+	DI.Clave, DI.CodigoTarifa</value>
+  </data>
+  <data name="GetAllCompanies" xml:space="preserve">
+    <value>select 
+	Identification, Identification || " - " || Name as Name, Quantity 
+from 
+(
+	select  
+		EmisorIdentificacionNumero as Identification, EmisorNombre  as Name, count(1) as Quantity
+	from 
+		Cabecera
+	group by 	
+		EmisorIdentificacionNumero, EmisorNombre
+	UNION
+	select 
+		ReceptorIdentificacionNumero as Identification, ReceptorNombre as Name, count(1) as Quantity
+	from 
+		Cabecera
+	group by 	
+		ReceptorIdentificacionNumero, ReceptorNombre
+) as X
+order by 3 desc</value>
+  </data>
   <data name="InsertDocument" xml:space="preserve">
     <value>insert into
  {0}  
