@@ -57,8 +57,8 @@ namespace CR.XML.Reader.DA
                 EmisorTelefonoNumTelefono = entity.Emisor.Telefono != null ? entity.Emisor.Telefono.NumTelefono : null,
                 EmisorCorreoElectronico = entity.Emisor.CorreoElectronico,
                 ReceptorNombre = entity.Receptor != null ? entity.Receptor.Nombre : null,
-                ReceptorIdentificacionTipo = entity.Receptor != null ? EnumTools.GetXmlAttributeValue<IdentificacionTypeTipo>(entity.Receptor.Identificacion.Tipo) : null,
-                ReceptorIdentificacionNumero = entity.Receptor != null ? entity.Receptor.Identificacion.Numero : null,
+                ReceptorIdentificacionTipo = entity.Receptor != null && entity.Receptor.Identificacion != null ? EnumTools.GetXmlAttributeValue<IdentificacionTypeTipo>(entity.Receptor.Identificacion.Tipo) : null,
+                ReceptorIdentificacionNumero = entity.Receptor != null && entity.Receptor.Identificacion != null ? entity.Receptor.Identificacion.Numero : null,
                 ReceptorIdentificacionExtranjero = entity.Receptor != null ? entity.Receptor.IdentificacionExtranjero : null,
                 ReceptorNombreComercial = entity.Receptor != null ? entity.Receptor.NombreComercial : null,
                 ReceptorUbicacionProvincia = entity.Receptor != null && entity.Receptor.Ubicacion != null ? entity.Receptor.Ubicacion.Provincia : null,
@@ -117,6 +117,9 @@ namespace CR.XML.Reader.DA
 
         private void ComercialCodeDetail(string Clave, string NumeroLinea, CodigoType[] comercialCodes)
         {
+            if (comercialCodes is null)
+                return;
+
             foreach (var item in comercialCodes)
             {
                 this.Connection.Execute(string.Format(Query.InsertDocumentComercialCode, this.TableName), new
@@ -247,7 +250,7 @@ namespace CR.XML.Reader.DA
                 this.Connection.Execute(string.Format(Query.InsertDocumentOtherText, TableName), new
                 {
                     entity.Clave,
-                    Codigo = item.codigo,
+                    Codigo = item.codigo is null ? string.Empty : item.codigo,
                     item.Value
                 });
             }
