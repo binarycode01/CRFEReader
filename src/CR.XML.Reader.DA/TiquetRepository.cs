@@ -247,6 +247,9 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in entity.Otros.OtroTexto)
             {
+                if (string.IsNullOrWhiteSpace(item.Value))
+                    continue;
+
                 this.Connection.Execute(string.Format(Query.InsertDocumentOtherText, TableName), new
                 {
                     entity.Clave,

@@ -3,6 +3,7 @@
 ### Fixed 
 - Consulta con el nombre de las sociedades.
 - Error de sincronización documento sin impuestos.
+- Error de sincronización documento otro texto espacio en blanco.
 
 ## Versión 1.0.0 [2022-04-08]
 ### Added
