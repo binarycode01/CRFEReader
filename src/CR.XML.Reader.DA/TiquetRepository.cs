@@ -134,6 +134,9 @@ namespace CR.XML.Reader.DA
 
         private void TaxesDetail(string Clave, string Numerolinea, ImpuestoType[] taxes)
         {
+            if (taxes is null)
+                return;
+
             foreach (var item in taxes)
             {
                 this.Connection.Execute(string.Format(Query.InsertDocumentTaxDetail, TableName), new

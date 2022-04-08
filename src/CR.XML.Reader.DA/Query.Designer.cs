@@ -110,7 +110,7 @@ namespace CR.XML.Reader.DA {
         ///WHERE 
         ///	C.ReceptorIdentificacionNumero = @Id AND
         ///	C.FechaEmision &gt;= @startDate and 
-        ///	c.FechaEmision &lt;= @endDate
+        ///	cast(c.FechaEmision as date) &lt;= @endDate
         ///	
         ///group by 
         ///	DI.Clave, DI.CodigoTarifa.

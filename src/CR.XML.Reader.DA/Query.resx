@@ -192,7 +192,7 @@ on
 WHERE 
 	C.ReceptorIdentificacionNumero = @Id AND
 	C.FechaEmision &gt;= @startDate and 
-	c.FechaEmision &lt;= @endDate
+	cast(c.FechaEmision as date) &lt;= @endDate
 	
 group by 
 	DI.Clave, DI.CodigoTarifa</value>
@@ -255,7 +255,7 @@ on
 where 
 	C.EmisorIdentificacionNumero = @Id and 
 	C.FechaEmision &gt;= @startDate and 
-	C.FechaEmision &lt;= @endDate</value>
+	cast(C.FechaEmision as date) &lt;= @endDate</value>
   </data>
   <data name="ExportSalesTaxes" xml:space="preserve">
     <value>select 
