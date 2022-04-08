@@ -6,7 +6,17 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Product>DOC-EL-CR</Product>
+    <Authors>binarycode01@gmail.com</Authors>
+    <AssemblyName>DOC-EL-CR</AssemblyName>
+    <ApplicationIcon>file-code-fill.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="file-code-fill.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator" Version="3.3.2" />

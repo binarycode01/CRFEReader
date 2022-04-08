@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSyncFolder));
             this.fdlScanFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.lblFolder = new System.Windows.Forms.Label();
@@ -85,6 +86,7 @@
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.lblFolder);
             this.Controls.Add(this.txtFolder);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSyncFolder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lector de archivos XML - Facturación Electrónica CR";

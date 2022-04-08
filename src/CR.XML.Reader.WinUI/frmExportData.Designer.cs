@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExportData));
             this.lblCompanies = new System.Windows.Forms.Label();
             this.cbxSociedad = new System.Windows.Forms.ComboBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
@@ -138,6 +139,7 @@
             this.Controls.Add(this.cbxSociedad);
             this.Controls.Add(this.lblCompanies);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmExportData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
