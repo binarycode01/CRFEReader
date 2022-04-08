@@ -179,18 +179,18 @@ namespace CR.XML.Reader.DA {
         ///from 
         ///(
         ///	select  
-        ///		EmisorIdentificacionNumero as Identification, EmisorNombre  as Name, count(1) as Quantity
+        ///		EmisorIdentificacionNumero as Identification, max(EmisorNombre)  as Name, count(1) as Quantity
         ///	from 
         ///		Cabecera
         ///	group by 	
-        ///		EmisorIdentificacionNumero, EmisorNombre
+        ///		EmisorIdentificacionNumero
         ///	UNION
         ///	select 
-        ///		ReceptorIdentificacionNumero as Identification, ReceptorNombre as Name, count(1) as Quantity
+        ///		ReceptorIdentificacionNumero as Identification, max( ReceptorNombre) as Name, count(1) as Quantity
         ///	from 
         ///		Cabecera
         ///	group by 	
-        ///		ReceptorIdentificacionNumero, ReceptorNombre
+        ///		ReceptorIdentificacionNumero
         ///) as X
         ///order by 3 desc.
         /// </summary>
