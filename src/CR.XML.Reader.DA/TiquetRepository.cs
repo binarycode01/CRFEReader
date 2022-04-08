@@ -76,8 +76,15 @@ namespace CR.XML.Reader.DA
 
         private void PaymentMethod(TiqueteElectronico entity)
         {
+            HashSet<string> payMethod = new HashSet<string>();
+
             foreach (var item in entity.MedioPago)
             {
+                if (payMethod.Contains(EnumTools.GetXmlAttributeValue<TiqueteElectronicoMedioPago>(item)))
+                    continue;
+
+                payMethod.Add(EnumTools.GetXmlAttributeValue<TiqueteElectronicoMedioPago>(item));
+
                 this.Connection.Execute( string.Format(Query.InsertDocumentPaymentMethod, TableName), new
                 {
                     Clave = entity.Clave,

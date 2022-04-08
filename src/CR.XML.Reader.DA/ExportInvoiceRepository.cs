@@ -76,8 +76,15 @@ namespace CR.XML.Reader.DA
 
         private void PaymentMethod(FacturaElectronicaExportacion entity)
         {
+            HashSet<string> payMethod = new HashSet<string>();
+
             foreach (var item in entity.MedioPago)
             {
+                if (payMethod.Contains(EnumTools.GetXmlAttributeValue<FacturaElectronicaExportacionMedioPago>(item)))
+                    continue;
+
+                payMethod.Add(EnumTools.GetXmlAttributeValue<FacturaElectronicaExportacionMedioPago>(item));
+
                 this.Connection.Execute(string.Format(Query.InsertDocumentPaymentMethod, this.TableName), new
                 {
                     Clave = entity.Clave,
