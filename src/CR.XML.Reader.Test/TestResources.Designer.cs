@@ -94,6 +94,15 @@ namespace CR.XML.Reader.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;FacturaElectronicaCompra xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronicaCompra&quot;&gt;&lt;Clave&gt;50601102100310100000000100099080000000330100101620&lt;/Clave&gt;&lt;CodigoActividad&gt;960102&lt;/CodigoActividad&gt;&lt;NumeroConsecutivo&gt;00100099080000000330&lt;/NumeroConsecutivo&gt;&lt;FechaEmision&gt;2021-10-01T09:27:00&lt;/FechaEmision&gt;&lt;Emisor&gt;&lt;Nombre&gt;NOT VALID&lt;/Nombre&gt;&lt;Identifi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RealPurchaseText {
+            get {
+                return ResourceManager.GetString("RealPurchaseText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;TiqueteElectronico xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/tiqueteElectronico&quot;&gt;&lt;Clave&gt;50601112000310134740300100005040000105120300105120&lt;/Clave&gt;&lt;CodigoActividad&gt;523205&lt;/CodigoActividad&gt;&lt;NumeroConsecutivo&gt;00100005040000105120&lt;/NumeroConsecutivo&gt;&lt;FechaEmision&gt;2020-11-01T15:34:38&lt;/FechaEmision&gt;&lt;Emisor&gt;&lt;Nombre&gt;VENECORI, S.A.&lt;/Nombre&gt;&lt;Identificacion&gt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RealTiquetText {
