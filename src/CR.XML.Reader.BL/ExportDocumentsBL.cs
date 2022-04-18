@@ -62,6 +62,9 @@ namespace CR.XML.Reader.BL
                 ws.Cells["A1"].LoadFromDataTable(data, true);
                 ws.Cells[ws.Dimension.Address].AutoFitColumns();
 
+                ws.Columns[1].Style.Numberformat.Format = "dd/MM/yyyy";
+                ws.Row(1).Style.Font.Bold = true;
+
                 return package.GetAsByteArray();
             }
         }
@@ -70,9 +73,9 @@ namespace CR.XML.Reader.BL
         {
             var headers = taxes.Select(t => new { t.Codigo, t.Tarifa }).Distinct().
                                 Select(x => new { value = $"{x.Codigo} - {x.Tarifa}%" });
-            var dataDocuments = new DataTable();
             var dataTaxes = new DataTable();
 
+            DataTable dataDocuments = createStructureDocuments();
 
             dataTaxes.Columns.Add("Clave", typeof(string));
 
@@ -110,6 +113,46 @@ namespace CR.XML.Reader.BL
 
             dataDocuments.Merge(dataTaxes);
 
+            return dataDocuments;
+        }
+
+        private static DataTable createStructureDocuments()
+        {
+            var dataDocuments = new DataTable();
+            dataDocuments.Columns.Add("FechaEmision", typeof(DateTime));
+            dataDocuments.Columns.Add("NumeroConsecutivo", typeof(string));
+            dataDocuments.Columns.Add("Clave", typeof(string));
+            dataDocuments.Columns.Add("CodigoActividad", typeof(string));
+            dataDocuments.Columns.Add("EmisorIdentificacionTipo", typeof(string));
+            dataDocuments.Columns.Add("EmisorIdentificacionNumero", typeof(string));
+            dataDocuments.Columns.Add("EmisorNombre", typeof(string));
+            dataDocuments.Columns.Add("EmisorTelefonoNumTelefono", typeof(string));
+            dataDocuments.Columns.Add("EmisorCorreoElectronico", typeof(string));
+            dataDocuments.Columns.Add("ReceptorIdentificacionTipo", typeof(string));
+            dataDocuments.Columns.Add("ReceptorIdentificacionNumero", typeof(string));
+            dataDocuments.Columns.Add("ReceptorIdentificacionExtranjero", typeof(string));
+            dataDocuments.Columns.Add("ReceptorNombre", typeof(string));
+            dataDocuments.Columns.Add("ReceptorTelefonoCodigoPais", typeof(string));
+            dataDocuments.Columns.Add("ReceptorTelefonoNumTelefono", typeof(string));
+            dataDocuments.Columns.Add("CondicionVenta", typeof(string));
+            dataDocuments.Columns.Add("PlazoCredito", typeof(string));
+            dataDocuments.Columns.Add("CodigoTipoMoneda", typeof(string));
+            dataDocuments.Columns.Add("Tipo", typeof(string));
+
+            dataDocuments.Columns.Add("TipoCambio", typeof(decimal));
+            dataDocuments.Columns.Add("TotalComprobante", typeof(decimal));
+            dataDocuments.Columns.Add("TotalExento", typeof(decimal));
+            dataDocuments.Columns.Add("TotalExonerado", typeof(decimal));
+            dataDocuments.Columns.Add("TotalGravado", typeof(decimal));
+            dataDocuments.Columns.Add("TotalImpuesto", typeof(decimal));
+            dataDocuments.Columns.Add("TotalIVADevuelto", typeof(decimal));
+            dataDocuments.Columns.Add("TotalMercanciasExentas", typeof(decimal));
+            dataDocuments.Columns.Add("TotalMercanciasGravadas", typeof(decimal));
+            dataDocuments.Columns.Add("TotalMercExonerada", typeof(decimal));
+            dataDocuments.Columns.Add("TotalOtrosCargos", typeof(decimal));
+            dataDocuments.Columns.Add("TotalServExentos", typeof(decimal));
+            dataDocuments.Columns.Add("TotalServExonerado", typeof(decimal));
+            dataDocuments.Columns.Add("TotalVenta", typeof(decimal));
             return dataDocuments;
         }
 

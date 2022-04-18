@@ -71,26 +71,27 @@ namespace CR.XML.Reader.DA {
         
         /// <summary>
         ///   Looks up a localized string similar to select 
-        ///	C.Tipo,
-        ///	C.Clave,
+        ///	C.FechaEmision,
         ///	C.NumeroConsecutivo,
+        ///	C.Clave,
         ///	C.CodigoActividad,
-        ///                  C.FechaEmision,
-        ///	C.EmisorNombre,
         ///	C.EmisorIdentificacionTipo,
         ///	C.EmisorIdentificacionNumero,
-        ///	C.EmisorNombreComercial,
-        ///	C.EmisorUbicacionProvincia,
-        ///	C.EmisorUbicacionCanton,
-        ///	C.EmisorUbicacionDistrito,
-        ///	C.EmisorUbicacionBarrio,
-        ///	C.EmisorUbicacionOtrasSenas,
-        ///	C.EmisorTelefonoCodigoPais,
+        ///	C.EmisorNombre,
         ///	C.EmisorTelefonoNumTelefono,
         ///	C.EmisorCorreoElectronico,
-        ///	C.ReceptorNombre,
         ///	C.ReceptorIdentificacionTipo,
-        ///	C.Recepto [rest of string was truncated]&quot;;.
+        ///	C.ReceptorIdentificacionNumero,
+        ///	C.ReceptorIdentificacionExtranjero,
+        ///	C.ReceptorNombre,
+        ///	C.ReceptorTelefonoCodigoPais,
+        ///	C.ReceptorTelefonoNumTelefono,
+        ///	C.CondicionVenta,
+        ///	C.PlazoCredito,
+        ///	R.CodigoTipoMoneda,
+        ///	C.Tipo,
+        ///	R.TipoCambio,
+        ///	cast(R.TotalSe [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ExportExpensesHeader {
             get {
@@ -123,26 +124,27 @@ namespace CR.XML.Reader.DA {
         
         /// <summary>
         ///   Looks up a localized string similar to select 
-        ///	C.Tipo,
-        ///	C.Clave,
-        ///	C.NumeroConsecutivo,
-        ///	C.CodigoActividad,
         ///	C.FechaEmision,
-        ///	C.EmisorNombre,
+        ///	C.NumeroConsecutivo,
+        ///	C.Clave,
+        ///	C.CodigoActividad,
         ///	C.EmisorIdentificacionTipo,
         ///	C.EmisorIdentificacionNumero,
-        ///	C.EmisorNombreComercial,
-        ///	C.EmisorUbicacionProvincia,
-        ///	C.EmisorUbicacionCanton,
-        ///	C.EmisorUbicacionDistrito,
-        ///	C.EmisorUbicacionBarrio,
-        ///	C.EmisorUbicacionOtrasSenas,
-        ///	C.EmisorTelefonoCodigoPais,
+        ///	C.EmisorNombre,
         ///	C.EmisorTelefonoNumTelefono,
         ///	C.EmisorCorreoElectronico,
-        ///	C.ReceptorNombre,
         ///	C.ReceptorIdentificacionTipo,
-        ///	C.ReceptorIdentificacionNu [rest of string was truncated]&quot;;.
+        ///	C.ReceptorIdentificacionNumero,
+        ///	C.ReceptorIdentificacionExtranjero,
+        ///	C.ReceptorNombre,
+        ///	C.ReceptorTelefonoCodigoPais,
+        ///	C.ReceptorTelefonoNumTelefono,
+        ///	C.CondicionVenta,
+        ///	C.PlazoCredito,
+        ///	C.Tipo,
+        ///	R.CodigoTipoMoneda,
+        ///	R.TipoCambio,
+        ///	cast(R.TotalSe [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ExportSalesHeader {
             get {

@@ -18,20 +18,7 @@
 
         public string? EmisorIdentificacionNumero { get; set; }
 
-        public string? EmisorNombreComercial { get; set; }
-
-        public string? EmisorUbicacionProvincia { get; set; }
-
-        public string? EmisorUbicacionCanton { get; set; }
-
-        public string? EmisorUbicacionDistrito { get; set; }
-
-        public string? EmisorUbicacionBarrio { get; set; }
-
-        public string? EmisorUbicacionOtrasSenas { get; set; }
-
-        public string? EmisorTelefonoCodigoPais { get; set; }
-
+                
         public string? EmisorTelefonoNumTelefono { get; set; }
 
         public string? EmisorCorreoElectronico { get; set; }
@@ -44,23 +31,9 @@
 
         public string? ReceptorIdentificacionExtranjero { get; set; }
 
-        public string? ReceptorNombreComercial { get; set; }
-
-        public string? ReceptorUbicacionProvincia { get; set; }
-
-        public string? ReceptorUbicacionCanton { get; set; }
-
-        public string? ReceptorUbicacionDistrito { get; set; }
-
-        public string? ReceptorUbicacionBarrio { get; set; }
-
-        public string? ReceptorUbicacionOtrasSenas { get; set; }
-
         public string? ReceptorTelefonoCodigoPais { get; set; }
 
         public string? ReceptorTelefonoNumTelefono { get; set; }
-
-        public string? ReceptorCorreoElectronico { get; set; }
 
         public string? PlazoCredito { get; set; }
 
