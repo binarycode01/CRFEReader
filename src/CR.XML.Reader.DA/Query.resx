@@ -126,7 +126,7 @@
 	C.Clave,
 	C.NumeroConsecutivo,
 	C.CodigoActividad,
-	C.FechaEmision,
+                  C.FechaEmision,
 	C.EmisorNombre,
 	C.EmisorIdentificacionTipo,
 	C.EmisorIdentificacionNumero,
@@ -177,8 +177,8 @@ on
 	C.Clave = R.Clave
 where 
 	C.ReceptorIdentificacionNumero = @Id and 
-	C.FechaEmision &gt;= @startDate and 
-	cast(C.FechaEmision as date) &lt;= @endDate</value>
+	date(C.FechaEmision) &gt;= @startDate and 
+	date(C.FechaEmision) &lt;= @endDate</value>
   </data>
   <data name="ExportExpensesTaxes" xml:space="preserve">
     <value>select 
@@ -191,8 +191,8 @@ on
 	DI.Clave = C.Clave
 WHERE 
 	C.ReceptorIdentificacionNumero = @Id AND
-	C.FechaEmision &gt;= @startDate and 
-	cast(c.FechaEmision as date) &lt;= @endDate
+	date (C.FechaEmision) &gt;= @startDate and 
+	date(c.FechaEmision) &lt;= @endDate
 	
 group by 
 	DI.Clave, DI.CodigoTarifa</value>
@@ -254,8 +254,8 @@ on
 	C.Clave = R.Clave
 where 
 	C.EmisorIdentificacionNumero = @Id and 
-	C.FechaEmision &gt;= @startDate and 
-	cast(C.FechaEmision as date) &lt;= @endDate</value>
+	date(C.FechaEmision) &gt;= @startDate and 
+	date(C.FechaEmision) &lt;= @endDate</value>
   </data>
   <data name="ExportSalesTaxes" xml:space="preserve">
     <value>select 
@@ -268,8 +268,8 @@ on
 	DI.Clave = C.Clave
 WHERE 
 	C.EmisorIdentificacionNumero = @Id AND
-	C.FechaEmision &gt;= @startDate and 
-	cast(c.FechaEmision as date) &lt;= @endDate
+	date(C.FechaEmision) &gt;= @startDate and 
+	date(c.FechaEmision) &lt;= @endDate
 	
 group by 
 	DI.Clave, DI.CodigoTarifa</value>

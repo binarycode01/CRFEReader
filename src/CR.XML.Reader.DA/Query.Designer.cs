@@ -75,7 +75,7 @@ namespace CR.XML.Reader.DA {
         ///	C.Clave,
         ///	C.NumeroConsecutivo,
         ///	C.CodigoActividad,
-        ///	C.FechaEmision,
+        ///                  C.FechaEmision,
         ///	C.EmisorNombre,
         ///	C.EmisorIdentificacionTipo,
         ///	C.EmisorIdentificacionNumero,
@@ -90,7 +90,7 @@ namespace CR.XML.Reader.DA {
         ///	C.EmisorCorreoElectronico,
         ///	C.ReceptorNombre,
         ///	C.ReceptorIdentificacionTipo,
-        ///	C.ReceptorIdentificacionNu [rest of string was truncated]&quot;;.
+        ///	C.Recepto [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ExportExpensesHeader {
             get {
@@ -109,8 +109,8 @@ namespace CR.XML.Reader.DA {
         ///	DI.Clave = C.Clave
         ///WHERE 
         ///	C.ReceptorIdentificacionNumero = @Id AND
-        ///	C.FechaEmision &gt;= @startDate and 
-        ///	cast(c.FechaEmision as date) &lt;= @endDate
+        ///	date (C.FechaEmision) &gt;= @startDate and 
+        ///	date(c.FechaEmision) &lt;= @endDate
         ///	
         ///group by 
         ///	DI.Clave, DI.CodigoTarifa.
@@ -161,8 +161,8 @@ namespace CR.XML.Reader.DA {
         ///	DI.Clave = C.Clave
         ///WHERE 
         ///	C.EmisorIdentificacionNumero = @Id AND
-        ///	C.FechaEmision &gt;= @startDate and 
-        ///	cast(c.FechaEmision as date) &lt;= @endDate
+        ///	date(C.FechaEmision) &gt;= @startDate and 
+        ///	date(c.FechaEmision) &lt;= @endDate
         ///	
         ///group by 
         ///	DI.Clave, DI.CodigoTarifa.

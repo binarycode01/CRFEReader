@@ -30,8 +30,8 @@ namespace CR.XML.Reader.DA
                 results = connection.Query<ExportDocumentDTO>(Query.ExportSalesHeader, new
                 {
                     Id,
-                    startDate,
-                    endDate
+                    startDate = startDate.ToString("yyyy-MM-dd"),
+                    endDate = endDate.ToString("yyyy-MM-dd")
                 }).ToList();
             }
             catch (Exception ex)
@@ -51,8 +51,8 @@ namespace CR.XML.Reader.DA
                 results = connection.Query<ExportTaxesDocumentDTO>(Query.ExportSalesTaxes, new
                 {
                     Id,
-                    startDate,
-                    endDate
+                    startDate = startDate.ToString("yyyy-MM-dd"),
+                    endDate = endDate.ToString("yyyy-MM-dd")
                 }).ToList();
             }
             catch (Exception ex)
@@ -72,8 +72,8 @@ namespace CR.XML.Reader.DA
                 results = connection.Query<ExportDocumentDTO>(Query.ExportExpensesHeader, new
                 {
                     Id,
-                    startDate,
-                    endDate
+                    startDate = startDate.ToString("yyyy-MM-dd"),
+                    endDate = endDate.ToString("yyyy-MM-dd")
                 }).ToList();
             }
             catch (Exception ex)
@@ -94,8 +94,8 @@ namespace CR.XML.Reader.DA
                 results = connection.Query<ExportTaxesDocumentDTO>(Query.ExportExpensesTaxes, new
                 {
                     Id,
-                    startDate,
-                    endDate
+                    startDate = startDate.ToString("yyyy-MM-dd"),
+                    endDate = endDate.ToString("yyyy-MM-dd")
                 }).ToList();
             }
             catch (Exception ex)

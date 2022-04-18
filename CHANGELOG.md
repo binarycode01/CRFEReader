@@ -1,8 +1,9 @@
 # Changelog DOC-EL CR v1.1.0
 
-## Versión 1.1.0
+## Versión 1.1.0 [Unreleased]
 ### Fixed
 - Caso TotalIVADevuelto, parametros nulos en tiquete y compra.
+- Error exportación de datos formatos fechas.
 
 ## Versión 1.0.1 [2022-04-09]
 ### Fixed 
