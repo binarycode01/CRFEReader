@@ -1,4 +1,9 @@
-# Changelog DOC-EL CR v1.0.1
+# Changelog DOC-EL CR v1.1.0
+
+## Versión 1.1.0
+### Fixed
+- Caso TotalIVADevuelto, parametros nulos en tiquete y compra.
+
 ## Versión 1.0.1 [2022-04-09]
 ### Fixed 
 - Consulta con el nombre de las sociedades.

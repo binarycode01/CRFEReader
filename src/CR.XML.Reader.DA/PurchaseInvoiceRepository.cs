@@ -193,8 +193,8 @@ namespace CR.XML.Reader.DA
                 {
                     entity.Clave,
                     TipoDocumento = EnumTools.GetXmlAttributeValue<OtrosCargosTypeTipoDocumento>(item.TipoDocumento),
-                    NumeroIdentidadTercero = DBNull.Value,
-                    NombreTercero = DBNull.Value,
+                    NumeroIdentidadTercero = string.Empty,
+                    NombreTercero = string.Empty,
                     item.Detalle,
                     item.Porcentaje,
                     item.MontoCargo
@@ -222,7 +222,7 @@ namespace CR.XML.Reader.DA
                 entity.ResumenFactura.TotalDescuentos,
                 entity.ResumenFactura.TotalVentaNeta,
                 entity.ResumenFactura.TotalImpuesto,
-                TotalIVADevuelto = DBNull.Value,
+                TotalIVADevuelto = 0,
                 entity.ResumenFactura.TotalOtrosCargos,
                 entity.ResumenFactura.TotalComprobante
             });
