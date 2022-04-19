@@ -5,7 +5,7 @@ using System.Data;
 
 namespace CR.XML.Reader.DA
 {
-    public class ExportRepository
+    public class ExportRepository : IExportRepository
     {
         #region Atributes
         private readonly IDbConnection connection;
@@ -13,7 +13,7 @@ namespace CR.XML.Reader.DA
         #endregion
 
         #region Contructors
-        public ExportRepository (IDbConnection connection, ILogger<ExportRepository> logger)
+        public ExportRepository(IDbConnection connection, ILogger<ExportRepository> logger)
         {
             this.connection = connection;
             this.logger = logger;
@@ -44,7 +44,7 @@ namespace CR.XML.Reader.DA
 
         public List<ExportTaxesDocumentDTO> GetSalesTaxes(string Id, DateTime startDate, DateTime endDate)
         {
-            List<ExportTaxesDocumentDTO> results = new List<ExportTaxesDocumentDTO> ();
+            List<ExportTaxesDocumentDTO> results = new List<ExportTaxesDocumentDTO>();
 
             try
             {

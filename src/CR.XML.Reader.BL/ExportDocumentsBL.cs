@@ -12,11 +12,11 @@ namespace CR.XML.Reader.BL
     {
         #region Atributes
         private readonly ILogger logger;
-        private readonly ExportRepository repository;
+        private readonly IExportRepository repository;
         #endregion
 
         #region Constructor
-        public ExportDocumentsBL(ILogger<ExportDocumentsBL> logger, ExportRepository repository)
+        public ExportDocumentsBL(ILogger<ExportDocumentsBL> logger, IExportRepository repository)
         {
             this.logger = logger;
             this.repository = repository;
