@@ -1,4 +1,8 @@
-# Changelog DOC-EL CR v1.2.0
+# Changelog DOC-EL CR v1.2.1
+
+## Versión 1.2.1 [Unreleased]
+### Fixed
+- Caso documentos sin detalle.
 
 ## Versión 1.2.0 [2022-04-19]
 ### Added 

@@ -96,6 +96,9 @@ namespace CR.XML.Reader.DA
 
         private void Detail(NotaCreditoElectronica entity)
         {
+            if (entity.DetalleServicio is null)
+                return;
+
             foreach (var item in entity.DetalleServicio)
             {
                 this.Connection.Execute(string.Format(Query.InsertDocumentDetail, this.TableName), new
