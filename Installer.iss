@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Doc-El-CR"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.2.0"
 #define MyAppExeName "DOC-EL-CR.exe"
 #define MyAppAssocName MyAppName + ""
 #define MyAppAssocExt ""

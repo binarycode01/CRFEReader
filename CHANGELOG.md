@@ -1,4 +1,8 @@
-# Changelog DOC-EL CR v1.1.0
+# Changelog DOC-EL CR v1.2.0
+
+## Versión 1.2.0 [2022-04-19]
+### Added 
+- Soporte para lectura de archivos .zip.
 
 ## Versión 1.1.0 [2022-04-18]
 ### Added

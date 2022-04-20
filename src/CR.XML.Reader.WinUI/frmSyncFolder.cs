@@ -96,7 +96,11 @@ namespace CR.XML.Reader
         private string[] ScanFolders(string path)
         {
             // TODO: Check performance.
-            string[] files = Directory.GetFiles(path, "*.xml", SearchOption.AllDirectories);
+            var allowedExtensions = new[] { ".xml", ".zip"};
+
+            string[] files = Directory.GetFiles(path,"*.*",SearchOption.AllDirectories)
+                                      .Where(file => allowedExtensions.Any(file.ToLower().EndsWith))
+                                      .ToArray();
 
             logger.Log(LogLevel.Information, $"Analizando {files.Count()} archivos.");
 

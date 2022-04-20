@@ -1,5 +1,6 @@
 ﻿using CR.XML.Reader.BL;
 using Microsoft.Extensions.Logging;
+using System.IO.Compression;
 
 namespace CR.XML.Reader.WinUI
 {
@@ -9,6 +10,8 @@ namespace CR.XML.Reader.WinUI
         private readonly IParseDocumentBL parser;
         private readonly ISyncDocumentBL syncBL;
         private readonly ILogger logger;
+        
+        int result = 0;
         #endregion
 
         #region Constructors
@@ -23,20 +26,21 @@ namespace CR.XML.Reader.WinUI
         #region Públic Methods
         public int Process(string[] files)
         {
-            int result = 0;
+            
             try
             {
                 foreach (var item in files)
                 {
-                    string text = File.ReadAllText(item);
-                    var doc = this.parser.Parse(text);
-
-                    if (doc != null)
+                    if (item.EndsWith(".zip"))
                     {
-                        if (this.syncBL.SyncDocument(doc))
-                        {
-                            result++;
-                        }
+                        SearchOnZipFile(item);
+                    }
+                    else
+                    {
+                        string text = string.Empty;
+                        text = File.ReadAllText(item);
+
+                        TryToSyncDoc(text);
                     }
                 }
             }
@@ -47,6 +51,49 @@ namespace CR.XML.Reader.WinUI
 
             return result;
         }
-        #endregion 
+        #endregion
+
+        #region Private Methods
+        private void TryToSyncDoc(string text)
+        {
+            var doc = this.parser.Parse(text);
+
+            if (doc != null)
+            {
+                if (this.syncBL.SyncDocument(doc))
+                {
+                    result++;
+                }
+            }
+        }
+
+        private void SearchOnZipFile(string item)
+        {
+            var lenghtFile = new FileInfo(item).Length;
+
+            // Skip large files.
+            if (lenghtFile >= 102400) // TODO: Hardcoded.
+                return;
+
+            using (var file = File.OpenRead(item))
+            using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
+            {
+                foreach (var itemzip in zip.Entries)
+                {
+                    // Skip another kind of files.
+                    if (!itemzip.FullName.EndsWith(".xml"))
+                        continue;
+
+                    using (var stream = itemzip.Open())
+                    {
+                        StreamReader reader = new StreamReader(stream);
+                        var text = reader.ReadToEnd();
+                        
+                        TryToSyncDoc(text);
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }
