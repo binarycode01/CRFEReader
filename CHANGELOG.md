@@ -1,6 +1,8 @@
 # Changelog DOC-EL CR v1.2.1
 
-## Versión 1.2.1 [Unreleased]
+## Versión 1.3.0 [Unreleased]
+### Added
+- Agregar mensaje de avance al sincronizar.
 ### Fixed
 - Caso documentos sin detalle.
 

@@ -29,6 +29,8 @@ namespace CR.XML.Reader.WinUI
             
             try
             {
+                var fp = new FilePercentageLog(logger, files.Length);
+
                 foreach (var item in files)
                 {
                     if (item.EndsWith(".zip"))
@@ -42,6 +44,8 @@ namespace CR.XML.Reader.WinUI
 
                         TryToSyncDoc(text);
                     }
+
+                    fp.Log();
                 }
             }
             catch (Exception ex)
