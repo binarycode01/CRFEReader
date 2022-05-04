@@ -8,10 +8,11 @@ namespace CR.XML.Reader.BL
         private readonly ILogger logger;
         decimal countFiles;
         int totalFiles;
+        int steps = 0;
         #endregion
 
         #region Contants
-        private const int Steps = 10;
+        private const int Step = 10;
         #endregion 
 
         #region Contructors
@@ -30,14 +31,6 @@ namespace CR.XML.Reader.BL
                 return (countFiles / totalFiles) * 100;
             }
         }
-
-        public bool PrintLog
-        {
-            get 
-            { 
-                return Percentage % Steps == 0 ? true : false;
-            }
-        }
         #endregion
 
         #region Public Methods
@@ -45,9 +38,10 @@ namespace CR.XML.Reader.BL
         {
             countFiles++;
 
-            if (PrintLog)
+            if (steps < Percentage)
             {
-                logger.LogTrace($"Avance: {Percentage}%");
+                steps += Step;
+                logger.LogTrace($"Avance: {Percentage:0.##}%");
             }
         }
         #endregion 

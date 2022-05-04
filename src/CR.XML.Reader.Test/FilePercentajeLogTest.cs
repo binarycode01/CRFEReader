@@ -11,31 +11,25 @@ namespace CR.XML.Reader.Test
     public class FilePercentageLogTest
     {
         [Theory]
+        [InlineData(1)]
         [InlineData(7)]
         [InlineData(34)]
-        [InlineData(178)]
+        [InlineData(177)]
         public void StepsLogTest(int fakeTotalFiles)
         {
-            var logFactory = Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory.Instance;
-            var logger = logFactory.CreateLogger("test");
+            FakeLogger logfake = new FakeLogger();
 
-            var bl = new FilePercentageLog(logger, fakeTotalFiles);
+            var bl = new FilePercentageLog(logfake, fakeTotalFiles);
 
             for (int i = 0; i < fakeTotalFiles; i++)
             {
                 bl.Log();
-
-                var calc = ((decimal)(i + 1) / fakeTotalFiles * 100) % 10;
-
-                if (calc == 0)
-                {
-                    Assert.True(bl.PrintLog);
-                }
-                else
-                {
-                    Assert.False(bl.PrintLog);
-                }
             }
+
+            var log = logfake.GetLog;
+
+            Assert.False(String.IsNullOrWhiteSpace(log));
+
         }
     }
 }
