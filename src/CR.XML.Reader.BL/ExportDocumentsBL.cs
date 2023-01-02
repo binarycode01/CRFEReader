@@ -69,10 +69,26 @@ namespace CR.XML.Reader.BL
             }
         }
 
+        private List<string> IVATaxes()
+        {
+            var taxes = new List<string>();
+
+            taxes.Add("0");
+            taxes.Add("0.5");
+            taxes.Add("1");
+            taxes.Add("2");
+            taxes.Add("4");
+            taxes.Add("8");
+            taxes.Add("13");
+
+            return taxes;
+        }
+
         private DataTable GetPivotData(List<ExportDocumentDTO> documents, List<ExportTaxesDocumentDTO> taxes)
         {
-            var headers = taxes.Select(t => new { t.Codigo, t.Tarifa }).Distinct().
-                                Select(x => new { value = $"{x.Codigo} - {x.Tarifa}%" });
+
+            var headers = this.IVATaxes().Select(t => new { value = $"{t}%" });
+            
             var dataTaxes = new DataTable();
 
             DataTable dataDocuments = createStructureDocuments();
@@ -92,7 +108,7 @@ namespace CR.XML.Reader.BL
 
                 foreach (var row in item)
                 {
-                    string columnName = $"{row.Codigo} - {row.Tarifa}%";
+                    string columnName = $"{row.Tarifa}%";
                     newRow[columnName] = row.Total;
                 }
             }

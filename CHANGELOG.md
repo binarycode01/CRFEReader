@@ -1,8 +1,9 @@
-# Changelog DOC-EL CR v1.2.1
+# Changelog DOC-EL CR v1.3.0
 
-## Versión 1.3.0 [Unreleased]
+## Versión 1.3.0 [2023-01-02]
 ### Added
 - Agregar mensaje de avance al sincronizar.
+- Columnas fijas de impuestos en la exportación.
 ### Fixed
 - Caso documentos sin detalle.
 
