@@ -1,4 +1,8 @@
-# Changelog DOC-EL CR v1.3.0
+# Changelog DOC-EL CR v1.3.1
+
+## Versión 1.3.1 [2023-01-26]
+### Fixed
+- Caso de exportación con problema de tipo de cambio.
 
 ## Versión 1.3.0 [2023-01-02]
 ### Added

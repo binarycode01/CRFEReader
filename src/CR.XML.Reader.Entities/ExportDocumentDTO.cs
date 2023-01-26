@@ -41,7 +41,7 @@
 
         public string? CodigoTipoMoneda { get; set; }
 
-        public string? TipoCambio { get; set; }
+        public double? TipoCambio { get; set; }
 
         public double TotalServExonerado { get; set; }
 
