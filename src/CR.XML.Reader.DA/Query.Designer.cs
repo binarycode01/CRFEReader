@@ -90,8 +90,7 @@ namespace CR.XML.Reader.DA {
         ///	C.PlazoCredito,
         ///	R.CodigoTipoMoneda,
         ///	C.Tipo,
-        ///	R.TipoCambio,
-        ///	cast(R.TotalSe [rest of string was truncated]&quot;;.
+        ///                   cast(R.TipoC [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ExportExpensesHeader {
             get {
@@ -143,8 +142,7 @@ namespace CR.XML.Reader.DA {
         ///	C.PlazoCredito,
         ///	C.Tipo,
         ///	R.CodigoTipoMoneda,
-        ///	R.TipoCambio,
-        ///	cast(R.TotalSe [rest of string was truncated]&quot;;.
+        ///cast(R.TipoCambio as Real) as T [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ExportSalesHeader {
             get {

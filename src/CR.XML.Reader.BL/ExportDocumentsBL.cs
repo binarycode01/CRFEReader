@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
 using System.Data;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 
 namespace CR.XML.Reader.BL
 {
@@ -109,6 +110,11 @@ namespace CR.XML.Reader.BL
                 foreach (var row in item)
                 {
                     string columnName = $"{row.Tarifa}%";
+
+                    if (!dataTaxes.Columns.Contains(columnName))
+                    {
+                        dataTaxes.Columns.Add(columnName, typeof(decimal));
+                    }
                     newRow[columnName] = row.Total;
                 }
             }

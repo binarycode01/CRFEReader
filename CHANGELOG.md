@@ -1,4 +1,12 @@
-# Changelog DOC-EL CR v1.3.1
+# Changelog DOC-EL CR v1.3.2
+
+## Versión 1.3.3 [2023-05-21]
+### Fixed
+- Escenario de exportación con impuestos extraños.
+
+## Versión 1.3.2 [2023-05-03]
+### Fixed
+- Error con tipo de cambio. 
 
 ## Versión 1.3.1 [2023-01-26]
 ### Fixed
