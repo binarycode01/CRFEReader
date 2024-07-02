@@ -1,4 +1,8 @@
-# Changelog DOC-EL CR v1.3.2
+# Changelog DOC-EL CR v1.3.4
+
+## Versión 1.3.4 [2024-07-02]
+### Fixed
+- Escenario de tiquete con otro contenido (XML).
 
 ## Versión 1.3.3 [2023-05-21]
 ### Fixed

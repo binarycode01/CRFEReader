@@ -276,11 +276,10 @@ namespace CR.XML.Reader.DA
 
             foreach (var item in entity.Otros.OtroContenido)
             {
-                this.Connection.Execute(string.Format(Query.InsertDocumentOtherContent), new
-                {
-                    entity.Clave,
-                    Any = item.Any.ToString(),
-                    item.codigo
+                this.Connection.Execute(string.Format(Query.InsertDocumentOtherContent, TableName), new
+                {   entity.Clave,
+                    Any = item.Any.InnerXml.ToString(),
+                    codigo = item.codigo is null ? string.Empty : item.codigo
                 });
             }
         }

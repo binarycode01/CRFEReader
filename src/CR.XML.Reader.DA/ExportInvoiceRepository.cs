@@ -279,8 +279,8 @@ namespace CR.XML.Reader.DA
                 this.Connection.Execute(string.Format(Query.InsertDocumentOtherContent, TableName), new
                 {
                     entity.Clave,
-                    Any = item.Any.ToString(),
-                    codigo = item.codigo
+                    Any = item.Any.InnerXml.ToString(),
+                    codigo = item.codigo is null ? string.Empty : item.codigo
                 });
             }
         }

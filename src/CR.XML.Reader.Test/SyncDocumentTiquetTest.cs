@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 using Xunit;
 using Xunit.Abstractions;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace CR.XML.Reader.Test
 {
@@ -48,6 +49,24 @@ namespace CR.XML.Reader.Test
                 AssertPaymentMethods(connection);
 
                 AssertTotals(connection);
+            }
+        }
+
+        [Fact]
+        public void Integral_Test_Sync_Valid_Tiquet_WithExtraXML()
+        {
+            ServiceProvider serviceProvider = CreateServiceProvider();
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+                runner.MigrateUp();
+
+                var parser = scope.ServiceProvider.GetRequiredService<IParseDocumentBL>();
+                var bl = scope.ServiceProvider.GetRequiredService<ISyncDocumentBL>();
+
+                var doc = parser.Parse(TestResources.RealTiquetWithOtherXmls);
+                bl.SyncDocument(doc);
             }
         }
         #endregion

@@ -35,5 +35,17 @@ namespace CR.XML.Reader.Test
 
             Assert.Null(doc);
         }
+
+        [Fact]
+        public void Parse_Valid_Tiquet_WithOtherXML()
+        {
+            var bl = new ParseDocumentBL();
+
+            var doc = new ParseDocumentBL().Parse(TestResources.RealTiquetWithOtherXmls);
+
+            Assert.IsType<Entities.XSD.v43.Tiquete.TiqueteElectronico>(doc);
+
+            Assert.False(string.IsNullOrWhiteSpace(((Entities.XSD.v43.Tiquete.TiqueteElectronico)doc).Otros.OtroContenido[0].Any.InnerXml)) ;
+        }
     }
 }

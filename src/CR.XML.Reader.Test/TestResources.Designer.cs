@@ -110,5 +110,14 @@ namespace CR.XML.Reader.Test {
                 return ResourceManager.GetString("RealTiquetText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;TiqueteElectronico xmlns=&quot;https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/tiqueteElectronico&quot; xsi:schemaLocation=&quot;https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/tiqueteElectronico https://www.hacienda.go.cr/ATV/ComprobanteElectronico/docs/esquemas/2016/v4.3/TiqueteElectronico_V4.3.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:dsig=&quot;http://www.w3.org/2000/09/xmldsig#&quot;&gt;&lt;Clave&gt;50630062400310123170700200099040000002216177046879&lt;/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RealTiquetWithOtherXmls {
+            get {
+                return ResourceManager.GetString("RealTiquetWithOtherXmls", resourceCulture);
+            }
+        }
     }
 }
