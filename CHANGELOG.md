@@ -1,4 +1,7 @@
-# Changelog DOC-EL CR v1.3.4
+# Changelog DOC-EL CR v2.0.0
+## Versión [2024-11-22]
+## Added
+- Se actualiza la versión .net a 8.0.
 
 ## Versión 1.3.4 [2024-07-02]
 ### Fixed
