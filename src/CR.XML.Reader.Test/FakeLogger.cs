@@ -11,7 +11,10 @@ namespace CR.XML.Reader.Test
     {
         private StringBuilder _log = new StringBuilder();
 
-        public IDisposable BeginScope<TState>(TState state) => default!;
+        public IDisposable BeginScope<TState>(TState state)
+        {
+            return default!;
+        }
 
         public bool IsEnabled(LogLevel logLevel)
         {

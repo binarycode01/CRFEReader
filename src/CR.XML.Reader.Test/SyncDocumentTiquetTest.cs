@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 using Xunit;
 using Xunit.Abstractions;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace CR.XML.Reader.Test
 {
@@ -34,7 +33,7 @@ namespace CR.XML.Reader.Test
 
                 // Act
                 var doc = parser.Parse(TestResources.RealTiquetText);
-                bl.SyncDocument(doc);
+                _ = bl.SyncDocument(doc);
 
                 IDbConnection connection = scope.ServiceProvider.GetRequiredService<IDbConnection>();
 
@@ -94,18 +93,19 @@ namespace CR.XML.Reader.Test
             Assert.Equal(tiquetDB.EmisorTelefonoCodigoPais, "506");
             Assert.Equal(tiquetDB.EmisorTelefonoNumTelefono, "21051600");
             Assert.Equal(tiquetDB.EmisorCorreoElectronico, "facturaelectronica.cr@alissgroup.com");
-            Assert.Equal(tiquetDB.ReceptorIdentificacionExtranjero, null);
-            Assert.Equal(tiquetDB.ReceptorNombreComercial, null);
-            Assert.Equal(tiquetDB.ReceptorUbicacionProvincia, null);
-            Assert.Equal(tiquetDB.ReceptorUbicacionCanton, null);
-            Assert.Equal(tiquetDB.ReceptorUbicacionDistrito, null);
-            Assert.Equal(tiquetDB.ReceptorUbicacionBarrio, null);
-            Assert.Equal(tiquetDB.ReceptorUbicacionOtrasSenas, null);
-            Assert.Equal(tiquetDB.ReceptorTelefonoCodigoPais, null);
-            Assert.Equal(tiquetDB.ReceptorTelefonoNumTelefono, null);
-            Assert.Equal(tiquetDB.ReceptorCorreoElectronico, null);
+            Assert.Null(tiquetDB.ReceptorIdentificacionExtranjero);
+            //Assert.Equal(tiquetDB.ReceptorIdentificacionExtranjero, null);
+            Assert.Null(tiquetDB.ReceptorNombreComercial);
+            Assert.Null(tiquetDB.ReceptorUbicacionProvincia);
+            Assert.Null(tiquetDB.ReceptorUbicacionCanton);
+            Assert.Null(tiquetDB.ReceptorUbicacionDistrito);
+            Assert.Null(tiquetDB.ReceptorUbicacionBarrio);
+            Assert.Null(tiquetDB.ReceptorUbicacionOtrasSenas);
+            Assert.Null(tiquetDB.ReceptorTelefonoCodigoPais);
+            Assert.Null(tiquetDB.ReceptorTelefonoNumTelefono);
+            Assert.Null(tiquetDB.ReceptorCorreoElectronico);
             Assert.Equal(tiquetDB.CondicionVenta, "01");
-            Assert.Equal(tiquetDB.PlazoCredito, null);
+            Assert.Null(tiquetDB.PlazoCredito);
         }
 
         private static void AssertDetail(IDbConnection connection)
@@ -118,7 +118,7 @@ namespace CR.XML.Reader.Test
 
             Assert.Equal(row1.Clave, "50601112000310134740300100005040000105120300105120");
             Assert.Equal(row1.NumeroLinea, "1");
-            Assert.Equal(row1.Codigo, null);
+            Assert.Null(row1.Codigo);
             Assert.Equal(row1.Cantidad, 1);
             Assert.Equal(row1.UnidadMedida, "Unid");
             Assert.Equal(row1.UnidadMedidaComercial, "UD");
@@ -158,12 +158,12 @@ namespace CR.XML.Reader.Test
             Assert.Equal(row1.Tarifa, 13);
             Assert.Equal(row1.FactorIVA, 0);
             Assert.Equal(row1.Monto, 511.9465);
-            Assert.Equal(row1.ExoneracionTipoDocumento, null);
-            Assert.Equal(row1.ExoneracionNumeroDocumento, null);
-            Assert.Equal(row1.ExoneracionNombreInstitucion, null);
-            Assert.Equal(row1.ExoneracionFechaEmision, null);
-            Assert.Equal(row1.ExoneracionPorcentaje, null);
-            Assert.Equal(row1.ExoneracionMonto, null);
+            Assert.Null(row1.ExoneracionTipoDocumento);
+            Assert.Null(row1.ExoneracionNumeroDocumento);
+            Assert.Null(row1.ExoneracionNombreInstitucion);
+            Assert.Null(row1.ExoneracionFechaEmision);
+            Assert.Null(row1.ExoneracionPorcentaje);
+            Assert.Null(row1.ExoneracionMonto);
         }
 
         private static void AssertPaymentMethods(IDbConnection connection)

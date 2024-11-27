@@ -2,7 +2,7 @@
 {
     public class CompanyDTO
     {
-        public string Identification { get; set; }
-        public string Name { get; set; }
+        public required string Identification { get; set; }
+        public required string Name { get; set; }
     }
 }
