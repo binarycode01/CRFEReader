@@ -15,53 +15,52 @@ using Microsoft.Extensions.Logging;
 using System.Data;
 using Xunit.Abstractions;
 
-namespace CR.XML.Reader.Test
+namespace CR.XML.Reader.Test;
+
+public abstract class SyncDocumentBaseAbstract
 {
-    public abstract class SyncDocumentBaseAbstract
+    public SyncDocumentBaseAbstract(ITestOutputHelper helper)
     {
-        public SyncDocumentBaseAbstract(ITestOutputHelper helper)
+        this.OutputHelper = helper;
+        this.dbName = $"{Guid.NewGuid()}";
+    }
+
+    #region Atributes
+    private string dbName { get; }
+
+    private ITestOutputHelper OutputHelper { get; }
+    #endregion
+
+    public ServiceProvider CreateServiceProvider()
+    {
+        var services = new ServiceCollection();
+
+        services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
+        services.AddScoped<ISyncDocumentBL, SyncDocumentBL>();
+
+        services.AddScoped<IRepository<FacturaElectronica>, InvoiceRepository>();
+        services.AddScoped<IRepository<TiqueteElectronico>, TiquetRepository>();
+        services.AddScoped<IRepository<NotaCreditoElectronica>, CreditMemoRepository>();
+        services.AddScoped<IRepository<NotaDebitoElectronica>, DebitMemoRepository>();
+        services.AddScoped<IRepository<FacturaElectronicaExportacion>, ExportInvoiceRepository>();
+        services.AddScoped<IRepository<FacturaElectronicaCompra>, PurchaseInvoiceRepository>();
+
+        services.AddLogging((builder) => builder.AddXUnit(OutputHelper));
+
+        var db = Guid.NewGuid().ToString();
+        services.AddLogging(l => l.AddFluentMigratorConsole()).
+            AddFluentMigratorCore().ConfigureRunner(r =>
+            r.AddSQLite()
+            .WithGlobalConnectionString($"Data Source={this.dbName}; Mode = Memory; Cache = Shared")
+            .ScanIn(typeof(_0001_Add_Main_Tables).Assembly).For.Migrations()
+        );
+
+        services.AddScoped<IDbConnection>((op) =>
         {
-            this.OutputHelper = helper;
-            this.dbName = $"{Guid.NewGuid()}";
-        }
+            return new SqliteConnection($"Data Source={this.dbName};Mode = Memory; Cache = Shared");
+        });
 
-        #region Atributes
-        private string dbName { get; }
-
-        private ITestOutputHelper OutputHelper { get; }
-        #endregion
-
-        public ServiceProvider CreateServiceProvider()
-        {
-            var services = new ServiceCollection();
-
-            services.AddScoped<IParseDocumentBL, ParseDocumentBL>();
-            services.AddScoped<ISyncDocumentBL, SyncDocumentBL>();
-
-            services.AddScoped<IRepository<FacturaElectronica>, InvoiceRepository>();
-            services.AddScoped<IRepository<TiqueteElectronico>, TiquetRepository>();
-            services.AddScoped<IRepository<NotaCreditoElectronica>, CreditMemoRepository>();
-            services.AddScoped<IRepository<NotaDebitoElectronica>, DebitMemoRepository>();
-            services.AddScoped<IRepository<FacturaElectronicaExportacion>, ExportInvoiceRepository>();
-            services.AddScoped<IRepository<FacturaElectronicaCompra>, PurchaseInvoiceRepository>();
-
-            services.AddLogging((builder) => builder.AddXUnit(OutputHelper));
-
-            var db = Guid.NewGuid().ToString();
-            services.AddLogging(l => l.AddFluentMigratorConsole()).
-                AddFluentMigratorCore().ConfigureRunner(r =>
-                r.AddSQLite()
-                .WithGlobalConnectionString($"Data Source={this.dbName}; Mode = Memory; Cache = Shared")
-                .ScanIn(typeof(_0001_Add_Main_Tables).Assembly).For.Migrations()
-            );
-
-            services.AddScoped<IDbConnection>((op) =>
-            {
-                return new SqliteConnection($"Data Source={this.dbName};Mode = Memory; Cache = Shared");
-            });
-
-            ServiceProvider serviceProvider = services.BuildServiceProvider();
-            return serviceProvider;
-        }
+        ServiceProvider serviceProvider = services.BuildServiceProvider();
+        return serviceProvider;
     }
 }

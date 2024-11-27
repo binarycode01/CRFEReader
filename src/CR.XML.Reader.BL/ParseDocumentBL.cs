@@ -1,44 +1,43 @@
 ﻿using CR.XML.Reader.Entities;
 using System.Xml.Serialization;
 
-namespace CR.XML.Reader.BL
+namespace CR.XML.Reader.BL;
+
+public class ParseDocumentBL : IParseDocumentBL
 {
-    public class ParseDocumentBL : IParseDocumentBL
+    #region Públic Methods
+    public IDocCR? Parse(string text)
     {
-        #region Públic Methods
-        public IDocCR? Parse(string text)
+        try
         {
-            try
+            Type type = new ParseXMLType().GetXMLType(text);
+            
+            XmlSerializer serializer = new XmlSerializer(type);
+
+            var document = serializer.Deserialize(ParseDocumentBL.TextToStream(text));
+
+            if (document is null)
             {
-                Type type = new ParseXMLType().GetXMLType(text);
-                
-                XmlSerializer serializer = new XmlSerializer(type);
-
-                var document = serializer.Deserialize(ParseDocumentBL.TextToStream(text));
-
-                if (document is null)
-                {
-                    throw new Exception(Messages.InvalidXMLDocument);
-                }
-
-                return (IDocCR)document;
+                throw new Exception(Messages.InvalidXMLDocument);
             }
-            catch {}
 
-            return null;
+            return (IDocCR)document;
         }
-        #endregion
+        catch {}
 
-        #region Private Methods
-        private static Stream TextToStream(string text)
-        {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write(text);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
-        #endregion 
+        return null;
     }
+    #endregion
+
+    #region Private Methods
+    private static Stream TextToStream(string text)
+    {
+        var stream = new MemoryStream();
+        var writer = new StreamWriter(stream);
+        writer.Write(text);
+        writer.Flush();
+        stream.Position = 0;
+        return stream;
+    }
+    #endregion 
 }

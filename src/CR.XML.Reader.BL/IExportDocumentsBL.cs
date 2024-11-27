@@ -1,9 +1,7 @@
 ﻿using CR.XML.Reader.Entities;
 
-namespace CR.XML.Reader.BL
+namespace CR.XML.Reader.BL;
+public interface IExportDocumentsBL
 {
-    public interface IExportDocumentsBL
-    {
-        public byte[] Export(string Id, DateTime startDate, DateTime endDate, DocModeEnum mode);
-    }
+    public byte[] Export(string Id, DateTime startDate, DateTime endDate, DocModeEnum mode);
 }

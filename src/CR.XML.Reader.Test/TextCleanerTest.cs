@@ -1,18 +1,17 @@
 ﻿using CR.XML.Reader.BL;
 using Xunit;
 
-namespace CR.XML.Reader.Test
+namespace CR.XML.Reader.Test;
+
+public class TextCleanerTest
 {
-    public class TextCleanerTest
+    [Fact]
+    public void Fix_Excape_Characters()
     {
-        [Fact]
-        public void Fix_Excape_Characters()
-        {
-            string originalText = "Hola \r\nMundo ";
+        string originalText = "Hola \r\nMundo ";
 
-            var converted = TextCleaner.FixEscapeCaracter(originalText);
+        var converted = TextCleaner.FixEscapeCaracter(originalText);
 
-            Assert.Equal("Hola Mundo", converted);
-        }
+        Assert.Equal("Hola Mundo", converted);
     }
 }

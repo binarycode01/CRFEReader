@@ -1,8 +1,7 @@
-﻿namespace CR.XML.Reader.Entities
+﻿namespace CR.XML.Reader.Entities;
+
+public enum DocModeEnum
 {
-    public enum DocModeEnum
-    {
-        Emission,
-        Reception
-    }
+    Emission,
+    Reception
 }

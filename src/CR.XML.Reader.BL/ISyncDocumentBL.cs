@@ -1,9 +1,8 @@
 ﻿using CR.XML.Reader.Entities;
 
-namespace CR.XML.Reader.BL
+namespace CR.XML.Reader.BL;
+
+public interface ISyncDocumentBL
 {
-    public interface ISyncDocumentBL
-    {
-        public bool SyncDocument(IDocCR document);
-    }
+    public bool SyncDocument(IDocCR document);
 }

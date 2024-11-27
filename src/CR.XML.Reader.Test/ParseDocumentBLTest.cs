@@ -2,50 +2,49 @@
 using CR.XML.Reader.Entities.XSD.v43.Factura;
 using Xunit;
 
-namespace CR.XML.Reader.Test
+namespace CR.XML.Reader.Test;
+
+public class ParseDocumentBLTest
 {
-    public class ParseDocumentBLTest
+    [Fact]
+    public void Parse_Valid_Electronic_Invoice_CR()
     {
-        [Fact]
-        public void Parse_Valid_Electronic_Invoice_CR()
-        {
-            var bl = new ParseDocumentBL();
+        var bl = new ParseDocumentBL();
 
-            var doc = new ParseDocumentBL().Parse(TestResources.RealFEText);
+        var doc = new ParseDocumentBL().Parse(TestResources.RealFEText);
 
-            Assert.IsType<FacturaElectronica>(doc);
-        }
+        Assert.IsType<FacturaElectronica>(doc);
+    }
 
-        [Fact]
-        public void Parse_Valid_Credit_Note_CR()
-        {
-            var bl = new ParseDocumentBL();
+    [Fact]
+    public void Parse_Valid_Credit_Note_CR()
+    {
+        var bl = new ParseDocumentBL();
 
-            var doc = new ParseDocumentBL().Parse(TestResources.RealNCText);
+        var doc = new ParseDocumentBL().Parse(TestResources.RealNCText);
 
-            Assert.IsType<Entities.XSD.v43.NotaCredito.NotaCreditoElectronica>(doc);
-        }
+        Assert.IsType<Entities.XSD.v43.NotaCredito.NotaCreditoElectronica>(doc);
+    }
 
-        [Fact]
-        public void Parse_Invalid_XML_Document()
-        {
-            var bl = new ParseDocumentBL();
+    [Fact]
+    public void Parse_Invalid_XML_Document()
+    {
+        var bl = new ParseDocumentBL();
 
-            var doc = new ParseDocumentBL().Parse(TestResources.InvalidXML);
+        var doc = new ParseDocumentBL().Parse(TestResources.InvalidXML);
 
-            Assert.Null(doc);
-        }
+        Assert.Null(doc);
+    }
 
-        [Fact]
-        public void Parse_Valid_Tiquet_WithOtherXML()
-        {
-            var bl = new ParseDocumentBL();
+    [Fact]
+    public void Parse_Valid_Tiquet_WithOtherXML()
+    {
+        var bl = new ParseDocumentBL();
 
-            var doc = new ParseDocumentBL().Parse(TestResources.RealTiquetWithOtherXmls);
+        var doc = new ParseDocumentBL().Parse(TestResources.RealTiquetWithOtherXmls);
 
-            Assert.IsType<Entities.XSD.v43.Tiquete.TiqueteElectronico>(doc);
+        Assert.IsType<Entities.XSD.v43.Tiquete.TiqueteElectronico>(doc);
 
-            Assert.False(string.IsNullOrWhiteSpace(((Entities.XSD.v43.Tiquete.TiqueteElectronico)doc).Otros.OtroContenido[0].Any.InnerXml)) ;
-        }
+        Assert.False(string.IsNullOrWhiteSpace(((Entities.XSD.v43.Tiquete.TiqueteElectronico)doc).Otros.OtroContenido[0].Any.InnerXml)) ;
     }
 }

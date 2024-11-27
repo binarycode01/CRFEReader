@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using System.Data;
 
-
 public partial class frmSyncFolder : Form
 {
     #region Atributes
